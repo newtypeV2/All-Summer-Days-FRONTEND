@@ -44,7 +44,7 @@ const CharacterCardPreview = (props) => {
             <Card.Img variant="top" src="https://i.imgur.com/Eub38zZ.gif" />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
-                <Card.Text>
+                
                   <div>
                       <div className="row">
                           <div className="col">
@@ -69,7 +69,7 @@ const CharacterCardPreview = (props) => {
                             </div>
                       </div>
                   </div>
-                </Card.Text>
+                
             </Card.Body>
            <Card.Footer>
             <small className="text-muted">NOT IN CAMPAIGN</small>
