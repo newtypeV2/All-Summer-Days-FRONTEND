@@ -6,8 +6,7 @@ class CharacterContainer extends Component {
 
 displayCharacters = () => {
   return  this.props.characters.map(character => 
-<<<<<<< HEAD
-        <CharacterCard key={character.id} character={character}/> )
+        <CharacterCard key={character.id} character={character} onClickHandler={this.props.selectCharacter}/> )
 }
 
     newCharacter = () => {
@@ -18,11 +17,6 @@ displayCharacters = () => {
         console.log("showing character")
     }
 
-=======
-        <CharacterCard character={character} onClickHandler={this.props.selectCharacter}/> )
-}
-
->>>>>>> 5f056757af84762523ee2a39f251cc291a9a4dc7
     render(){
         return(
             <div>
