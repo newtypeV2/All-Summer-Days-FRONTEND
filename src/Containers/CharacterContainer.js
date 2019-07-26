@@ -5,10 +5,8 @@ class CharacterContainer extends Component {
 
 displayCharacters = () => {
   return  this.props.characters.map(character => 
-        <CharacterCard character={character}/> )
+        <CharacterCard character={character} onClickHandler={this.props.selectCharacter}/> )
 }
-
-
 
     render(){
         return(
@@ -16,7 +14,6 @@ displayCharacters = () => {
             <Row>Button</Row>
                 <Row>
                     {this.displayCharacters()}
-                    
                 </Row>  
             <Row>Button</Row>
             </Container>

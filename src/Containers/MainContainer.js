@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CharacterContainer from './CharacterContainer'
-import {Container, Row, Col, Navbar} from 'react-bootstrap'
+import CharacterCardPreview from '../Components/CharacterCardPreview'
+import { Row, Col, Navbar} from 'react-bootstrap'
 const url = 'http://10.113.106.139:5000/characters'
 
 class MainContainer extends Component {
@@ -17,7 +18,11 @@ class MainContainer extends Component {
         }))
     }
     
-
+    selectCharacter = (characterObj) => {
+      this.setState({
+        selectedCharacter : characterObj
+      })
+    }
 
 
 
@@ -36,8 +41,12 @@ class MainContainer extends Component {
             </Navbar>
           <div>
             <Row>
-              <Col sm={7}><CharacterContainer characters={this.state.allCharacters}/></Col>
-              <Col sm={5}>2 of 2</Col>
+              <Col sm={7}>
+                <CharacterContainer characters={this.state.allCharacters} selectCharacter={this.selectCharacter}/>
+              </Col>
+              <Col sm={5}>
+                {this.state.selectedCharacter.id ? <CharacterCardPreview character={this.state.selectedCharacter}/> : null}
+              </Col>
             </Row>   
           </div> 
           </div>

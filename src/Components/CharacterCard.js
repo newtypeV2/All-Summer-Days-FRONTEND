@@ -4,7 +4,7 @@ const CharacterCard = (props) => {
     
     return( 
       <Col>
-        <Card style={{width: "15rem"}}>
+        <Card style={{width: "15rem"}} onClick={()=>props.onClickHandler(props.character)}>
             <Card.Img variant="top" src="https://image.shutterstock.com/image-vector/default-placeholder-avatar-profile-on-260nw-490458475.jpg" />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
