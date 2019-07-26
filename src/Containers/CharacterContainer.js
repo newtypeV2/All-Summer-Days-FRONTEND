@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CharacterCard from '../Components/CharacterCard'
+import {Container, Row, Col} from 'react-bootstrap'
 class CharacterContainer extends Component {
 
 displayCharacters = () => {
@@ -11,10 +12,15 @@ displayCharacters = () => {
 
     render(){
         return(
-        <div>
-            <CharacterCard character={{firstname: "Joel"}}/>
-            {this.displayCharacters()}
-        </div>
+            <Container fluid={true}>
+            <Row><Col>Button</Col></Row>
+                <Row>
+                    {this.displayCharacters()}
+                    {this.displayCharacters()}
+                    
+                </Row>  
+            <Row><Col>Button</Col></Row>
+            </Container>
         )
     }
 }
