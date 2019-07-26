@@ -7,10 +7,13 @@ const CharacterCard = (props) => {
         <Card style={{width: "15rem"}}>
             <Card.Img variant="top" src="https://image.shutterstock.com/image-vector/default-placeholder-avatar-profile-on-260nw-490458475.jpg" />
             <Card.Body>
-                <Card.Title>{props.character.firstname}</Card.Title>
+                <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
                 <Card.Text>
-                    This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
+                  <ul>
+                    <li>Class : {props.character.char_class.name}</li>
+                    <li>Level : {props.character.level}</li>
+                    <li>Level : {props.character.max_hp}</li>
+                  </ul>
                 </Card.Text>
             </Card.Body>
            <Card.Footer>

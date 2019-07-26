@@ -12,14 +12,13 @@ displayCharacters = () => {
 
     render(){
         return(
-            <Container fluid={true}>
-            <Row><Col>Button</Col></Row>
+            <Container>
+            <Row>Button</Row>
                 <Row>
-                    {this.displayCharacters()}
                     {this.displayCharacters()}
                     
                 </Row>  
-            <Row><Col>Button</Col></Row>
+            <Row>Button</Row>
             </Container>
         )
     }
