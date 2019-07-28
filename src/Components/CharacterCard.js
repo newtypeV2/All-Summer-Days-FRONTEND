@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Card, Col} from 'react-bootstrap';
+
 const CharacterCard = (props) => {
     
     return( 

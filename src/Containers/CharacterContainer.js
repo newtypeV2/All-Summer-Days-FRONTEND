@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CharacterCard from '../Components/CharacterCard'
 import {Container, Row, Col} from 'react-bootstrap'
 import Buttons from '../Components/Button'
-import CharForm from '../Components/CharForm'
+// import CharForm from '../Components/CharForm'
 import { Link } from 'react-router-dom';
 class CharacterContainer extends Component {
     state = {

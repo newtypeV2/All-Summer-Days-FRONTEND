@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://media.dnd.wizards.com/DragonPlus11_1920x1080_Wallpaper.jpg")
 }
 
 code {
@@ -13,41 +14,46 @@ code {
 }
 
 div.charStats {
-  width: 15%;
+  width: 13rem;
   border: 3px solid orange;
   position: absolute;
   left: 1rem;
   top: 1rem;
   padding-bottom: 2rem;
 }
-div.hpInfo {
-  width: 40%;
-  border: 3px solid black;
-  position: absolute;
-  left : 46rem;
-  top: 1rem;
-}
 
 div.proficiencyInfo{
-  width: 20%;
-  height: 40rem;
+  width: 17rem;
   border: 3px solid greenyellow;
   position: absolute;
-  left: 20rem;
+  left: 15rem;
+  top: 1rem;
+  font-size: 13px;
+}
+
+div.hpInfo {
+  width: 15rem;
+  border: 3px solid black;
+  position: absolute;
+  left : 33rem;
   top: 1rem;
 }
 
 div.charInfo {
-  width: 98%;
-  height: 11rem;
+  width: 60rem;
+  height: 15rem;
   border: 3px solid red;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 1rem;
   position: relative;
 }
 
 div.subCont {
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60rem;
 }
 
 div.mainStats {
@@ -102,4 +108,26 @@ table.tableProf{
 
 table.tr{
   text-align: left;
+}
+
+table.tableSkills{
+  text-align: center;
+  width: 100%;
+}
+
+td.profData{
+  text-align: left;
+  position: absolute;
+  left: 1rem;
+}
+
+td.skillData{
+  text-align: left;
+  position: absolute;
+  left: 1rem;
+}
+
+div.hpData{
+  text-align: right;
+  padding-left: 1rem;
 }

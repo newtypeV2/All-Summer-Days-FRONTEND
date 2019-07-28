@@ -1,4 +1,5 @@
 import React from "react";
+import {Row,Col} from "react-bootstrap"
 
 const Userview = (props) => {
     const characterProf = props.character.proficiencies.map(prof => prof.name)
@@ -9,22 +10,24 @@ const Userview = (props) => {
     const modWIS = props.getProficiencyMod(props.character.wisdom)
     const modCHA = props.getProficiencyMod(props.character.charisma)
     return(
-        <div>
-            <div className="charInfo">
-                <div className="mainInfo">
-                    <div>Name: {`${props.character.firstname} ${props.character.lastname}`}</div>
-                    <div>Class: {props.character.char_class.name}</div>
-                    <div>Level: {props.character.level}</div>
+            <Row className="justify-content-sm-center">
+                <Col sm={12}>
+                {/* <div> */}
+                <div className="charInfo">
+                    <div className="mainInfo">
+                        <div>Name: {`${props.character.firstname} ${props.character.lastname}`}</div>
+                        <div>Class: {props.character.char_class.name}</div>
+                        <div>Level: {props.character.level}</div>
+                    </div>
+                    <div className="definingInfo">
+                        <div>Eyes: {props.character.eyes}</div>
+                        <div>Skin: {props.character.skin}</div>
+                        <div>Hair: {props.character.hair}</div>
+                        <div>Age: {props.character.age}</div>
+                        <div>Height: {props.character.height}cm</div>
+                        <div>Weight: {props.character.weight}lbs</div>
+                    </div>
                 </div>
-                <div className="definingInfo">
-                    <div>Eyes: {props.character.eyes}</div>
-                    <div>Skin: {props.character.skin}</div>
-                    <div>Hair: {props.character.hair}</div>
-                    <div>Age: {props.character.age}</div>
-                    <div>Height: {props.character.height}cm</div>
-                    <div>Weight: {props.character.weight}lbs</div>
-                </div>
-            </div>
             <div className="subCont">
                 <div className="charStats">
                         <div className="mainStats">
@@ -57,40 +60,133 @@ const Userview = (props) => {
                     <div>+{props.character.level} Proficiency Bonus</div>
                     <div className="profStats">
                         <table className="tableProf">
+                            <tbody>
                             <tr>
-                                <td>{characterProf.includes("Saving Throw: STR") ? `● ${modSTR+props.character.level}` : "○" }</td> 
+                                <td className="profData">{characterProf.includes("Saving Throw: STR") ? `● ${modSTR+props.character.level}` : `○ ${modSTR}` }</td> 
                                 <td>Strength</td>
                             </tr>
                             <tr>
-                            <td>{characterProf.includes("Saving Throw: DEX") ? `● ${modDEX+props.character.level}` : "○" } </td>
-                            <td>Dexterity</td>
+                                <td className="profData">{characterProf.includes("Saving Throw: DEX") ? `● ${modDEX+props.character.level}` : `○ ${modDEX}` } </td>
+                                <td>Dexterity</td>
                             </tr>
                             <tr>
-                            <td>{characterProf.includes("Saving Throw: CON") ? `● ${modCON+props.character.level}` : "○" } </td>
-                            <td>Constitution</td>
+                                <td className="profData">{characterProf.includes("Saving Throw: CON") ? `● ${modCON+props.character.level}` : `○ ${modCON}` } </td>
+                                <td>Constitution</td>
                             </tr>
                             <tr>
-                            <td>{characterProf.includes("Saving Throw: INT") ? `● ${modINT+props.character.level}` : "○" } </td>
-                            <td>Intelligence</td>
+                                <td className="profData">{characterProf.includes("Saving Throw: INT") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
+                                <td>Intelligence</td>
                             </tr>
                             <tr>
-                            <td>{characterProf.includes("Saving Throw: WIS") ? `● ${modWIS+props.character.level}` : "○" }</td>
-                            <td> Wisdom</td>
+                                <td className="profData">{characterProf.includes("Saving Throw: WIS") ? `● ${modWIS+props.character.level}` : `○ ${modWIS}` }</td>
+                                <td> Wisdom</td>
                              </tr>
                             <tr>
-                            <td>{characterProf.includes("Saving Throw: CHA") ? `● ${modCHA+props.character.level}` : "○" } </td>
-                            <td>Charisma</td>
+                                <td className="profData">{characterProf.includes("Saving Throw: CHA") ? `● ${modCHA+props.character.level}` : `○ ${modCHA}` } </td>
+                                <td>Charisma</td>
                             </tr>
+                            </tbody>
                         </table>
                         <div>SAVING THROWS</div>
                     </div>
                     <div className="profSkills">
+                    <table className="tableSkills">
+                    <tbody>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Acrobatics<") ? `● ${modDEX+props.character.level}` : `○ ${modDEX}` }</td> 
+                                <td>Acrobatics(Dex)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Animal Handling") ? `● ${modWIS+props.character.level}` : `○ ${modWIS}` } </td>
+                                <td>Animal Handling(Wis)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Arcana") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
+                                <td>Arcana(Int)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Athletics") ? `● ${modSTR+props.character.level}` : `○ ${modSTR}` } </td>
+                                <td>Athletics(Str)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Deception") ? `● ${modCHA+props.character.level}` : `○ ${modCHA}` }</td>
+                                <td>Deception(Cha)</td>
+                             </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: History") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
+                                <td>History(Int)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Insight") ? `● ${modWIS+props.character.level}` : `○ ${modWIS}` }</td> 
+                                <td>Insight(Wis)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Intimidation") ? `● ${modSTR+props.character.level}` : `○ ${modSTR}` } </td>
+                                <td>Intimidation(Str)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Investigation") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
+                                <td>Investigation(Int)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Medicine") ? `● ${modWIS+props.character.level}` : `○ ${modWIS}` } </td>
+                                <td>Medicine(Wis)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Nature") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
+                                <td>Nature(Int)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Perception") ? `● ${modWIS+props.character.level}` : `○ ${modWIS}` }</td> 
+                                <td>Perception(Wis)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Persuation") ? `● ${modCHA+props.character.level}` : `○ ${modCHA}` } </td>
+                                <td>Persuation(Cha)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Religion") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
+                                <td>Religion(Int)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Sleight of Hand") ? `● ${modDEX+props.character.level}` : `○ ${modDEX}` } </td>
+                                <td>Sleight of Hand(Dex)</td>
+                            </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Stealth") ? `● ${modDEX+props.character.level}` : `○ ${modDEX}` }</td>
+                                <td>Stealth(Dex)</td>
+                             </tr>
+                            <tr>
+                                <td className="skillData">{characterProf.includes("Skill: Survival") ? `● ${modWIS+props.character.level}` : `○ ${modWIS}` } </td>
+                                <td>Survival(Wis)</td>
+                            </tr>
+                            </tbody>
+                        </table>
                         <div>SKILLS</div>
                     </div>
                 </div>
-                <div className="hpInfo">HP INFO</div>
+                <div className="hpInfo">
+                    <div className="hpData">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>AC: {10+modDEX}</td>
+                                </tr>
+                                <tr>
+                                    <td>MAX HP: {props.character.max_hp}</td>
+                                </tr>
+                                <tr>
+                                    <td>CURRENT HP: {props.character.hitpoints}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {/* </div> */}
+
             </div>
-        </div>
+            </Col>
+            </Row>
     )
 }
 

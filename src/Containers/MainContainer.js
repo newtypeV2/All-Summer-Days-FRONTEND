@@ -79,7 +79,7 @@ class MainContainer extends Component {
                     this.state.allCharacters.length >0 ? 
                     <Userview 
                         getProficiencyMod={this.getProficiencyMod} 
-                        character={this.state.allCharacters[0]}
+                        character={this.state.allCharacters[2]}
                     /> 
                     :
                     null
