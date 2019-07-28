@@ -3,11 +3,7 @@ import CharacterCard from '../Components/CharacterCard'
 import {Container, Row, Col} from 'react-bootstrap'
 import Buttons from '../Components/Button'
 import CharForm from '../Components/CharForm'
-import {
-    BrowserRouter as Router,
-    Route
-  } from 'react-router-dom';
-  import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 class CharacterContainer extends Component {
     state = {
         checked: true
