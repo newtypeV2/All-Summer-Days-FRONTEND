@@ -14,6 +14,7 @@ code {
 }
 
 div.charStats {
+  background-color: black;
   width: 13rem;
   border: 3px solid orange;
   position: absolute;
@@ -23,6 +24,7 @@ div.charStats {
 }
 
 div.proficiencyInfo{
+  background-color: black;
   width: 17rem;
   border: 3px solid greenyellow;
   position: absolute;
@@ -32,6 +34,7 @@ div.proficiencyInfo{
 }
 
 div.hpInfo {
+  background-color: black;
   width: 15rem;
   border: 3px solid black;
   position: absolute;
@@ -47,6 +50,7 @@ div.charInfo {
   margin-right: auto;
   margin-top: 1rem;
   position: relative;
+  background-color: black;
 }
 
 div.subCont {
@@ -62,6 +66,7 @@ div.mainStats {
 }
 
 div.mod{
+  background-color: black;
   border: 1px solid black;
   position: relative;
   margin-left: auto;
@@ -86,6 +91,7 @@ div.definingInfo{
 }
 
 div.profSkills{
+  background-color: black;
   position: relative;
   border: 1px dotted red;
   margin-left: auto;
@@ -94,6 +100,7 @@ div.profSkills{
 }
 
 div.profStats{
+  background-color: black;
   position: relative;
   border: 1px dotted blue;
   margin-left: auto;
@@ -130,4 +137,8 @@ td.skillData{
 div.hpData{
   text-align: right;
   padding-left: 1rem;
+}
+
+#userviewdiv{
+  color: whitesmoke;
 }

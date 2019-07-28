@@ -10,7 +10,7 @@ const Userview = (props) => {
     const modWIS = props.getProficiencyMod(props.character.wisdom)
     const modCHA = props.getProficiencyMod(props.character.charisma)
     return(
-            <Row className="justify-content-sm-center">
+            <Row className="justify-content-sm-center" id="userviewdiv">
                 <Col sm={12}>
                 {/* <div> */}
                 <div className="charInfo">
