@@ -8,7 +8,7 @@ import {
   Route
 } from 'react-router-dom';
 
-const url = 'http://10.113.106.139:5000/characters'
+const url = 'http://localhost:3000/characters'
 
 class MainContainer extends Component {
     state = {
@@ -46,27 +46,24 @@ class MainContainer extends Component {
               </Navbar.Collapse>
             </Navbar>
           <div>
-            <Row>
+            <Form.Row>
             <Col sm={7}>
             <Router>
                 
               <Route exact path="/Characters" render={() => <CharacterContainer characters={this.state.allCharacters} selectCharacter={this.selectCharacter}/>} />
-              
-              {/* <Route exact path="/login" render={Login} />  */}
                 
             </Router>
               </Col>
                 <Col sm={5}>
                   {this.state.selectedCharacter.id ? <CharacterCardPreview character={this.state.selectedCharacter}/> : null}
                 </Col>
-              <Col sm={12}>
 
+              <Col sm={12}>
                 <Router>
                   <Route exact path='/form' render={() => <CharForm/>}/>
-                  {/* <Route exact path="/login" render={Login} />  */}
                 </Router>
              </Col>
-            </Row>   
+            </Form.Row>   
 
           </div> 
           </div>
