@@ -15,7 +15,8 @@ console.log(window.location.hostname)
 class MainContainer extends Component {
     state = {
         allCharacters: [],
-        selectedCharacter: {}
+        selectedCharacter: {},
+        classList: []  
     }
 
     getProficiencyMod = (stat) => {
@@ -55,11 +56,18 @@ class MainContainer extends Component {
   }
 
     componentDidMount(){
-        fetch(url)
+      fetch(url)
         .then(resp => resp.json())
         .then(characters => this.setState({
             allCharacters: characters
         }))
+       fetch('http://localhost:3000/class')
+        .then(resp => resp.json())
+        .then(classes => 
+          this.setState({
+            classList: classes
+           })
+        )
     }
     
     selectCharacter = (characterObj) => {
@@ -67,6 +75,8 @@ class MainContainer extends Component {
         selectedCharacter : characterObj
       })
     }
+
+
 
 
 
@@ -114,6 +124,7 @@ class MainContainer extends Component {
                   {/* <Route exact path="/login" render={Login} />  */}
              </Col>
             </Row>   
+
           </div> 
         
     ) 
