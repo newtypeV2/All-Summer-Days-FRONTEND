@@ -31,8 +31,6 @@ class CharForm extends Component{
     }
      
     getClass = (event) => {
-        let t = this
-        debugger
         let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}})
         this.setState({
           className: name[0],
@@ -138,11 +136,7 @@ class CharForm extends Component{
     <Form.Label>Last Name</Form.Label>
     <Form.Control type="" placeholder="put name last here" />
   </Form.Group>
-<<<<<<< HEAD
-  <Form.Group controlId="exampleForm.ControlSelect1">
-=======
   <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
->>>>>>> form
     <Form.Label>Character Class</Form.Label>
     <Form.Control as="select">
       <option>Barbarian</option>
@@ -165,40 +159,6 @@ class CharForm extends Component{
       <option>2</option>
     </Form.Control>
   </Form.Group>
-<<<<<<< HEAD
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Strength</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log('strength')}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Dexterity</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log("dex")}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Constitution</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log("const")}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Intelligence</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log("Intelli")}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Example te</Form.Label>
-    <Form.Control as="textarea" rows="3" />
-  </Form.Group>
-</Form>
- )
-}
-export default CharForm 
-=======
   <AbilityScore name={'strength'} abilityScore={this.state.abilityScore} score={this.state.character.strength} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'dexterity'} abilityScore={this.state.abilityScore} score={this.state.character.dexterity} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'constitution'}  abilityScore={this.state.abilityScore} score={this.state.character.constitution} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
@@ -358,4 +318,3 @@ export default CharForm
 }
 export default CharForm 
 
->>>>>>> form
