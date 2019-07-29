@@ -230,7 +230,7 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label style={{color: 'white'}} >Hair Color</Form.Label>
+    <Form.Label style={{color: 'black'}} >Hair Color</Form.Label>
     <Form.Control as="select" >
     <option>Black</option>
       <option>Gray</option>
@@ -267,11 +267,11 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label style={{color: 'white'}} >Background</Form.Label>
+    <Form.Label style={{color: 'black'}} >Background</Form.Label>
     <Form.Control as="textarea" rows="3" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label style={{color: 'white'}} >Alignment</Form.Label>
+    <Form.Label style={{color: 'black'}} >Alignment</Form.Label>
     <Form.Control as="select" >
       <option>Lawful Good</option>
       <option>Neutral Good </option>
