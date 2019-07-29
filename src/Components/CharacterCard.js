@@ -5,7 +5,7 @@ const CharacterCard = (props) => {
     
     return( 
       <Col>
-        <Card style={{width: "15rem"}} onClick={()=>props.onClickHandler(props.character)}>
+        <Card style={{width: "15rem",color: "white"}} onClick={()=>props.onClickHandler(props.character)} bg={'dark'} variant={'dark'} >
             <Card.Img variant="top" src={props.character.image_url} />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
