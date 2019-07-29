@@ -4,7 +4,7 @@ import {Card} from 'react-bootstrap/';
 const CharacterCardPreview = (props) => {
 
         return(
-            <Card style={{width: "24rem", color: "white"}}bg={'dark'} variant={'dark'}>
+            <Card style={{width: "24rem",color: "white", marginTop: "3.7rem", marginLeft: "10rem", padding: "1rem"}}bg={'dark'} variant={'dark'}>
             <Card.Img variant="top" src={props.character.image_url} />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>

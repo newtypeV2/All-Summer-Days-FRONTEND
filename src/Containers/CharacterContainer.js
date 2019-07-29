@@ -26,7 +26,7 @@ class CharacterContainer extends Component {
        
         return(
            
-            <div>
+            <div >
            
                  <Row className="wrapper">
                      <Link to={'/form'}>
@@ -34,7 +34,7 @@ class CharacterContainer extends Component {
                      </Link>
                  </Row>
            
-            <Container>
+            <Container >
                 <Row>
                     {this.displayCharacters()}
                 </Row>  
