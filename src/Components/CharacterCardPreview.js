@@ -5,7 +5,7 @@ const CharacterCardPreview = (props) => {
 
         return(
             <Card style={{width: "24rem"}}>
-            <Card.Img variant="top" src="https://i.imgur.com/Eub38zZ.gif" />
+            <Card.Img variant="top" src={props.character.image_url} />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
                 

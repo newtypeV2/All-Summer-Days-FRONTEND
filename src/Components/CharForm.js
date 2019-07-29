@@ -4,7 +4,7 @@ import {Form} from 'react-bootstrap';
 const CharForm = () => {
  return (
     <Form>
-    <Form.Group as={Row} controlId="formHorizontalEmail">
+    <Form.Group controlId="formHorizontalEmail">
     <Form.Label column sm='2'>First Name</Form.Label>
     <Form.Control type="" placeholder="put name first here" />
   </Form.Group>
