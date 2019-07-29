@@ -22,7 +22,6 @@ class MainContainer extends Component {
     }
 
     updateLoggedInUser = (user) => {
-        debugger
         this.setState({
             loggedInUser : user
         })
@@ -89,9 +88,11 @@ class MainContainer extends Component {
         // console.log(this.state.allCharacters)
       return(
             <div>
-                <NavBar />
+                <NavBar 
+                    loggedInUser={this.state.loggedInUser}
+                />
                 <Row id="mainrow">
-                    
+                        {this.state.loggedInUser.username ? <Redirect to="/characters"/> : <Redirect to="/login"/>}
                         {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
                         <Route exact path="/login" render={() =>
                             <Col sm={12}>
