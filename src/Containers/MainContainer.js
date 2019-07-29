@@ -3,21 +3,29 @@ import CharacterContainer from './CharacterContainer'
 import CharacterCardPreview from '../Components/CharacterCardPreview'
 import CharForm from '../Components/CharForm'
 import NavBar from '../Components/Navibar'
-
+import Login from '../Components/Login'
 import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
-import {Route} from 'react-router-dom'
+import {Route,Redirect} from 'react-router-dom'
 
 const charUrl = `http://${window.location.hostname}:5000/characters`
 const classUrl = `http://${window.location.hostname}:5000/class`
-console.log(window.location.hostname)
+// console.log(window.location.hostname)
 
 
 class MainContainer extends Component {
     state = {
         allCharacters: [],
         selectedCharacter: {},
-        classList: []  
+        classList: [],
+        loggedInUser:{}
+    }
+
+    updateLoggedInUser = (user) => {
+        debugger
+        this.setState({
+            loggedInUser : user
+        })
     }
 
     getProficiencyMod = (stat) => {
@@ -78,7 +86,7 @@ class MainContainer extends Component {
     }
 
     render(){
-        console.log(this.state.allCharacters)
+        // console.log(this.state.allCharacters)
       return(
             <div>
                 <NavBar />
@@ -87,7 +95,9 @@ class MainContainer extends Component {
                         {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
                         <Route exact path="/login" render={() =>
                             <Col sm={12}>
-                                LOGIN HERE
+                                <Login 
+                                    updateLoggedInUser={this.updateLoggedInUser}
+                                />
                             </Col>
                         }/>
                         <Route exact path="/sheet" render={() =>
@@ -102,9 +112,9 @@ class MainContainer extends Component {
                             <React.Fragment>
                                 <Col sm={7}>
                                     <CharacterContainer 
-                                    characters={this.state.allCharacters} 
-                                    selectCharacter={this.selectCharacter}
-                                    selectedCharacter={this.state.selectedCharacter}
+                                        characters={this.state.allCharacters} 
+                                        selectCharacter={this.selectCharacter}
+                                        selectedCharacter={this.state.selectedCharacter}
                                     />
                                 
                                 

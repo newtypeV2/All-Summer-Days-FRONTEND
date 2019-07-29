@@ -2,7 +2,6 @@ import React from "react";
 import {Row,Col} from "react-bootstrap"
 
 const Userview = (props) => {
-    debugger
     if (props.character.id){
     const characterProf = props.character.proficiencies.map(prof => prof.name)
     const modSTR = props.getProficiencyMod(props.character.strength)
