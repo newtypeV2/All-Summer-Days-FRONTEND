@@ -11,12 +11,12 @@ class CharForm extends Component{
             lastName: "", 
             char_class_id: null, 
             level: 2,
-            strength: 0,
-            dexterity: 0, 
-            constitution: 0, 
-            intelligence: 0, 
-            wisdom: 0,
-            charisma: 0,
+            strength: 8,
+            dexterity: 8, 
+            constitution: 8, 
+            intelligence: 8, 
+            wisdom: 8,
+            charisma: 8,
             hitpoints: 0,
             max_hp: 0,
             age: 0,
@@ -62,10 +62,17 @@ class CharForm extends Component{
             [ability]: num   
          }
         })
+    }
          
-           
+       pointBuy = (event) => {
+        let num = parseInt(event.target.value)
+        let nuNum = this.state.abilityScore.length - num
+        this.setState({
+             abilityScore:  [...Array(nuNum).keys()]
+        })
+       }    
             
-      }
+      
 
      render(){
  return (
