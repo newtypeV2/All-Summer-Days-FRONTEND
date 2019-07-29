@@ -6,16 +6,15 @@ const AbilityScore = (props) => {
        
         <Form.Group controlId="exampleForm.ControlSelect2" onChange={props.setScore} >
             
-        <Form.Label>{props.name}  <Button>+</Button></Form.Label>
+        <Form.Label>{props.name}  
+        
+        <Button value={props.score} onClick={(event) => props.buy(event, props)}>+</Button>
+        </Form.Label>
         
         <Form.Control as="select">  
         
-        {props.score ? <option className={props.name} value={props.score}>{props.score}</option> :
+         <option className={props.name} value={props.score}>{props.score}</option> 
               
-            props.choice.map((num, i) => 
-           
-            <option key={i} className={props.name} value={num} placeholder="please choose">{num}</option>)}
-           
         </Form.Control>
        
       </Form.Group>

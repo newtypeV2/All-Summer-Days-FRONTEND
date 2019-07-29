@@ -5,7 +5,7 @@ class CharForm extends Component{
     state = {
         choices: [0, 15, 14, 13, 12, 10, 8],
         ClassName: {}, 
-        abilityScore: [...Array(28).keys()],
+        abilityScore: 27,
         character: {
             firstName: "",
             lastName: "", 
@@ -44,33 +44,82 @@ class CharForm extends Component{
         })
       } 
    
-      setScore = (event) => {
-        let t = this
-        let num = parseInt(event.target.value)
-        let scores = this.state.choices.filter(choice => {return choice != event.target.value})
-        let nuNum = this.state.abilityScore.length - num
-        let obj = Object.keys(this.state.character)
-        let newObj = obj.filter(key => {if(key === event.target.children[0].className){return key}else{}})
-        let ability = newObj[0]
+    //   setScore = (event) => {
+    //     let t = this
+    //     let num = parseInt(event.target.value)
+    //     let scores = this.state.choices.filter(choice => {return choice != event.target.value})
+    //     let nuNum = this.state.abilityScore.length - num
+    //     let obj = Object.keys(this.state.character)
+    //     let newObj = obj.filter(key => {if(key === event.target.children[0].className){return key}else{}})
+    //     let ability = newObj[0]
         
-        debugger 
+    //     debugger 
+    //     this.setState({
+    //     choices: scores, 
+    //     //  abilityScore:  [...Array(nuNum).keys()],
+    //      character: {
+    //         ...this.state.character,
+    //         [ability]: num   
+    //      }
+    //     })
+    // }
+         
+       pointBuy = (cost, num, props) => {
+        let obj = Object.keys(this.state.character)
+        let name = obj.filter(key => {if(key === props.name){return key}else{}})
+        debugger
+        if(this.state.abilityScore === 0){
+            alert("You Have No More Points!")
+        }else{
         this.setState({
-        choices: scores, 
-        //  abilityScore:  [...Array(nuNum).keys()],
-         character: {
-            ...this.state.character,
-            [ability]: num   
-         }
+             abilityScore: this.state.abilityScore - cost,
+             character: {
+                 ...this.state.character,
+                 [name]: num + 1
+             }
         })
     }
-         
-       pointBuy = (event) => {
+       } 
+       
+       pointCost = (event, props) => {
+        let cost = 0
         let num = parseInt(event.target.value)
-        let nuNum = this.state.abilityScore.length - num
-        this.setState({
-             abilityScore:  [...Array(nuNum).keys()]
-        })
-       }    
+        debugger
+        if(num === 8){
+           cost = 0
+          return this.pointBuy(cost, num, props)}
+        else if(num === 9){
+          cost = 1
+          return this.pointBuy(cost, num, props)
+        }
+        else if(num === 10){
+           cost = 2
+           return this.pointBuy(cost, num, props)
+        }
+        else if(num === 11){
+           cost = 3
+           return this.pointBuy(cost, num, props)
+        }
+        else if(num === 12){
+          cost = 4
+          return this.pointBuy(cost, num, props)
+        }
+        else if(num === 13){
+          cost = 5
+          return this.pointBuy(cost, num, props)
+        }
+        else if(num === 14){
+          cost = 7
+          return this.pointBuy(cost, num, props)
+        }
+        else if(num === 15){
+         cost = 9
+         return this.pointBuy(cost, num, props)
+        }
+
+        
+        
+       }
             
       
 
@@ -112,12 +161,12 @@ class CharForm extends Component{
       <option>2</option>
     </Form.Control>
   </Form.Group>
-  <AbilityScore name={'strength'} abilityScore={this.state.abilityScore} score={this.state.character.strength} setScore={this.setScore} choice={this.state.choices}/>
-  <AbilityScore name={'dexterity'} abilityScore={this.state.abilityScore} score={this.state.character.dexterity} setScore={this.setScore} choice={this.state.choices}/>
-  <AbilityScore name={'constitution'}  abilityScore={this.state.abilityScore} score={this.state.character.constitution} setScore={this.setScore} choice={this.state.choices}/>
-  <AbilityScore name={'intelligence'} abilityScore={this.state.abilityScore} score={this.state.character.intelligence} setScore={this.setScore} choice={this.state.choices}/>
-  <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices}/>
-  <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices}/>
+  <AbilityScore name={'strength'} abilityScore={this.state.abilityScore} score={this.state.character.strength} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+  <AbilityScore name={'dexterity'} abilityScore={this.state.abilityScore} score={this.state.character.dexterity} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+  <AbilityScore name={'constitution'}  abilityScore={this.state.abilityScore} score={this.state.character.constitution} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+  <AbilityScore name={'intelligence'} abilityScore={this.state.abilityScore} score={this.state.character.intelligence} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+  <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+  <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label>Eye Color</Form.Label>
     <Form.Control as="select" >
@@ -257,7 +306,7 @@ class CharForm extends Component{
   <Col sm={3}>
   <Card border="primary" style={{ width: '10rem' }}>
     <Card.Body>
-      <Card.Title> Points Left: {this.state.abilityScore.length - 1}</Card.Title>
+      <Card.Title> Points Left: {this.state.abilityScore}</Card.Title>
     </Card.Body>
   </Card>
   </Col>

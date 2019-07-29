@@ -39,15 +39,7 @@ class MainContainer extends Component {
     }
 
 
-    // getClasses = () => {
-    //   let t =  this
-    //   fetch('http://localhost:3000/class')
-    //   .then(resp => resp.json())
-    //   .then(classes => this.setState({
-    //       classList: classes
-    //   }))
-    //   debugger
-    // }
+
 
 
     render(){
