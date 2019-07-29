@@ -65,7 +65,6 @@ class CharForm extends Component{
        pointBuy = (cost, num, props) => {
         let obj = Object.keys(this.state.character)
         let name = obj.filter(key => {if(key === props.name){return key}else{}})
-        debugger
         if(this.state.abilityScore === 0){
             alert("You Have No More Points!")
         }else{
@@ -82,7 +81,6 @@ class CharForm extends Component{
        pointCost = (event, props) => {
         let cost = 0
         let num = parseInt(event.target.value)
-        debugger
         if(num === 8){
            cost = 0
           return this.pointBuy(cost, num, props)}
@@ -129,15 +127,15 @@ class CharForm extends Component{
         <Row>
         <Col sm={3}>
     <Form.Group controlId="formHorizontalEmail">
-    <Form.Label >First Name</Form.Label>
+    <Form.Label style={{color: 'white'}} >First Name</Form.Label>
     <Form.Control type="" placeholder="put name first here" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Last Name</Form.Label>
+    <Form.Label style={{color: 'white'}} >Last Name</Form.Label>
     <Form.Control type="" placeholder="put name last here" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
-    <Form.Label>Character Class</Form.Label>
+    <Form.Label style={{color: 'white'}} >Character Class</Form.Label>
     <Form.Control as="select">
       <option>Barbarian</option>
       <option>Bard</option>
@@ -154,7 +152,7 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Level</Form.Label>
+    <Form.Label style={{color: 'white'}} >Level</Form.Label>
     <Form.Control as="select" >
       <option>2</option>
     </Form.Control>
@@ -166,7 +164,7 @@ class CharForm extends Component{
   <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Eye Color</Form.Label>
+    <Form.Label style={{color: 'white'}} >Eye Color</Form.Label>
     <Form.Control as="select" >
       <option>Yellow</option>
       <option>Amber</option>
@@ -191,7 +189,7 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Skin Color</Form.Label>
+    <Form.Label style={{color: 'white'}} >Skin Color</Form.Label>
     <Form.Control as="select" >
     <option>Pale</option>
       <option>Fair</option>
@@ -232,7 +230,7 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Hair Color</Form.Label>
+    <Form.Label style={{color: 'white'}} >Hair Color</Form.Label>
     <Form.Control as="select" >
     <option>Black</option>
       <option>Gray</option>
@@ -269,11 +267,11 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Background</Form.Label>
+    <Form.Label style={{color: 'white'}} >Background</Form.Label>
     <Form.Control as="textarea" rows="3" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Alignment</Form.Label>
+    <Form.Label style={{color: 'white'}} >Alignment</Form.Label>
     <Form.Control as="select" >
       <option>Lawful Good</option>
       <option>Neutral Good </option>
@@ -286,7 +284,7 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Proficiencies</Form.Label>
+    <Form.Label style={{color: 'white'}} >Proficiencies</Form.Label>
     <Form.Control as="select">
       <option>{}</option>
       <option>{}</option>

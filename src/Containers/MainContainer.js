@@ -56,7 +56,7 @@ class MainContainer extends Component {
   }
 
     componentDidMount(){
-      fetch(url)
+      fetch('http://localhost:3000/characters')
         .then(resp => resp.json())
         .then(characters => this.setState({
             allCharacters: characters
