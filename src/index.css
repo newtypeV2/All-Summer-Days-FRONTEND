@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./DNDSprites/DragonPlus.jpg")
+  background-image: url("./DNDSprites/DragonPlus.jpg");
 }
 
 code {
@@ -142,6 +142,8 @@ div.hpData{
 
 #userviewdiv{
   color: whitesmoke;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #Footer{
@@ -155,4 +157,11 @@ div.hpData{
 
 #mainrow{
   margin-bottom: 50px;
+  width: 100%;
+}
+
+img.avatar{
+  width: 200px;
+  padding: 1rem;
+  position: absolute;
 }

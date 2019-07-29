@@ -27,6 +27,7 @@ const Userview = (props) => {
                         <div>Height: {props.character.height}cm</div>
                         <div>Weight: {props.character.weight}lbs</div>
                     </div>
+                    <img src={props.character.image_url} alt={`${props.character.image_url}`} className="avatar"/>
                 </div>
             <div className="subCont">
                 <div className="charStats">

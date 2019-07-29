@@ -8,7 +8,9 @@ import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route} from 'react-router-dom'
 
-const url = 'http://localhost:5000/characters'
+const url = `http://${window.location.hostname}:5000/characters`
+console.log(window.location.hostname)
+
 
 class MainContainer extends Component {
     state = {
@@ -80,7 +82,7 @@ class MainContainer extends Component {
                     this.state.allCharacters.length >0 ? 
                     <Userview 
                         getProficiencyMod={this.getProficiencyMod} 
-                        character={this.state.allCharacters[2]}
+                        character={this.state.allCharacters[1]}
                     /> 
                     :
                     null
