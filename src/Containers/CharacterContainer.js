@@ -26,7 +26,7 @@ class CharacterContainer extends Component {
        
         return(
            
-            <div >
+            <div style={{marginTop: "2rem"}}>
            
                  <Row className="wrapper">
                      <Link to={'/form'}>
