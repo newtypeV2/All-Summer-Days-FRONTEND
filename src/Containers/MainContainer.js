@@ -3,6 +3,7 @@ import CharacterContainer from './CharacterContainer'
 import CharacterCardPreview from '../Components/CharacterCardPreview'
 import CharForm from '../Components/CharForm'
 import NavBar from '../Components/Navibar'
+import Footer from '../Components/Footer'
 import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route} from 'react-router-dom'
@@ -72,7 +73,7 @@ class MainContainer extends Component {
       return(
           <div>
             <NavBar />
-            <Row>
+            <Row id="mainrow">
             <Col sm={12}>
                   {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
                     {
@@ -111,7 +112,7 @@ class MainContainer extends Component {
                   {/* <Route exact path="/login" render={Login} />  */}
              </Col>
             </Row>   
-
+            <Footer />
           </div> 
         
     ) 
