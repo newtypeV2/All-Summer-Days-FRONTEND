@@ -67,7 +67,6 @@ class CharForm extends Component{
        pointBuy = (cost, num, props) => {
         let obj = Object.keys(this.state.character)
         let name = obj.filter(key => {if(key === props.name){return key}else{}})
-        debugger
         if(this.state.abilityScore === 0){
             alert("You Have No More Points!")
         }else{
@@ -84,7 +83,6 @@ class CharForm extends Component{
        pointCost = (event, props) => {
         let cost = 0
         let num = parseInt(event.target.value)
-        debugger
         if(num === 8){
            cost = 0
           return this.pointBuy(cost, num, props)}
@@ -131,19 +129,15 @@ class CharForm extends Component{
         <Row>
         <Col sm={3}>
     <Form.Group controlId="formHorizontalEmail">
-    <Form.Label >First Name</Form.Label>
+    <Form.Label style={{color: 'white'}} >First Name</Form.Label>
     <Form.Control type="" placeholder="put name first here" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Last Name</Form.Label>
+    <Form.Label style={{color: 'white'}} >Last Name</Form.Label>
     <Form.Control type="" placeholder="put name last here" />
   </Form.Group>
-<<<<<<< HEAD
-  <Form.Group controlId="exampleForm.ControlSelect1">
-=======
   <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
->>>>>>> form
-    <Form.Label>Character Class</Form.Label>
+    <Form.Label style={{color: 'white'}} >Character Class</Form.Label>
     <Form.Control as="select">
       <option>Barbarian</option>
       <option>Bard</option>
@@ -160,45 +154,11 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Level</Form.Label>
+    <Form.Label style={{color: 'white'}} >Level</Form.Label>
     <Form.Control as="select" >
       <option>2</option>
     </Form.Control>
   </Form.Group>
-<<<<<<< HEAD
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Strength</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log('strength')}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Dexterity</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log("dex")}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Constitution</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log("const")}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Intelligence</Form.Label>
-    <Form.Control as="select" >
-      <option>{console.log("Intelli")}</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Example te</Form.Label>
-    <Form.Control as="textarea" rows="3" />
-  </Form.Group>
-</Form>
- )
-}
-export default CharForm 
-=======
   <AbilityScore name={'strength'} abilityScore={this.state.abilityScore} score={this.state.character.strength} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'dexterity'} abilityScore={this.state.abilityScore} score={this.state.character.dexterity} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'constitution'}  abilityScore={this.state.abilityScore} score={this.state.character.constitution} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
@@ -206,7 +166,7 @@ export default CharForm
   <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Eye Color</Form.Label>
+    <Form.Label style={{color: 'white'}} >Eye Color</Form.Label>
     <Form.Control as="select" >
       <option>Yellow</option>
       <option>Amber</option>
@@ -231,7 +191,7 @@ export default CharForm
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Skin Color</Form.Label>
+    <Form.Label style={{color: 'white'}} >Skin Color</Form.Label>
     <Form.Control as="select" >
     <option>Pale</option>
       <option>Fair</option>
@@ -272,7 +232,7 @@ export default CharForm
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Hair Color</Form.Label>
+    <Form.Label style={{color: 'white'}} >Hair Color</Form.Label>
     <Form.Control as="select" >
     <option>Black</option>
       <option>Gray</option>
@@ -309,11 +269,11 @@ export default CharForm
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Background</Form.Label>
+    <Form.Label style={{color: 'white'}} >Background</Form.Label>
     <Form.Control as="textarea" rows="3" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Alignment</Form.Label>
+    <Form.Label style={{color: 'white'}} >Alignment</Form.Label>
     <Form.Control as="select" >
       <option>Lawful Good</option>
       <option>Neutral Good </option>
@@ -326,7 +286,7 @@ export default CharForm
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Proficiencies</Form.Label>
+    <Form.Label style={{color: 'white'}} >Proficiencies</Form.Label>
     <Form.Control as="select">
       <option>{}</option>
       <option>{}</option>
@@ -358,4 +318,3 @@ export default CharForm
 }
 export default CharForm 
 
->>>>>>> form
