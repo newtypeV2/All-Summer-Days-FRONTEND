@@ -92,8 +92,8 @@ class MainContainer extends Component {
                   }/>
 
              </Col>
-              <Route exact path="/Characters" render={() => 
-              <React.Fragment>
+        <Route exact path="/Characters" render={() => 
+            <React.Fragment>
             <Col sm={7}>
                 <CharacterContainer 
                   characters={this.state.allCharacters} 
@@ -104,7 +104,7 @@ class MainContainer extends Component {
               
               {/* <Route exact path="/login" render={Login} />  */}
               </Col>
-              <Col sm={5}>
+            <Col sm={5}>
 
                   {this.state.selectedCharacter.id ? 
                     <CharacterCardPreview 
@@ -114,9 +114,9 @@ class MainContainer extends Component {
                     /> 
                     : 
                     null}
-                </Col>
-                </React.Fragment>
-                }/>
+            </Col>
+            </React.Fragment>
+        }/>
               <Col sm={12}>
                   <Route exact path='/form' render={() => <CharForm/>}/>
                   {/* <Route exact path="/login" render={Login} />  */}
