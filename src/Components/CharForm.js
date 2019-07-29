@@ -4,32 +4,63 @@ import {Form} from 'react-bootstrap';
 const CharForm = () => {
  return (
     <Form>
-    <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="name@example.com" />
+    <Form.Group as={Row} controlId="formHorizontalEmail">
+    <Form.Label column sm='2'>First Name</Form.Label>
+    <Form.Control type="" placeholder="put name first here" />
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlInput1">
+    <Form.Label>Last Name</Form.Label>
+    <Form.Control type="" placeholder="put name last here" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect1">
-    <Form.Label>Example select</Form.Label>
+    <Form.Label>Character Class</Form.Label>
     <Form.Control as="select">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+      <option>Barbarian</option>
+      <option>Bard</option>
+      <option>Cleric</option>
+      <option>Druid</option>
+      <option>Fighter</option>
+      <option>Monk</option>
+      <option>Paladin</option>
+      <option>Ranger</option>
+      <option>Rogue</option>
+      <option>Sorcerer</option>
+      <option>Warlock</option>
+      <option>Wizard</option>
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Example multiple select</Form.Label>
-    <Form.Control as="select" multiple>
-      <option>1</option>
+    <Form.Label>Level</Form.Label>
+    <Form.Control as="select" >
       <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label>Strength</Form.Label>
+    <Form.Control as="select" >
+      <option>{console.log('strength')}</option>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label>Dexterity</Form.Label>
+    <Form.Control as="select" >
+      <option>{console.log("dex")}</option>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label>Constitution</Form.Label>
+    <Form.Control as="select" >
+      <option>{console.log("const")}</option>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label>Intelligence</Form.Label>
+    <Form.Control as="select" >
+      <option>{console.log("Intelli")}</option>
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Example textarea</Form.Label>
+    <Form.Label>Example te</Form.Label>
     <Form.Control as="textarea" rows="3" />
   </Form.Group>
 </Form>
