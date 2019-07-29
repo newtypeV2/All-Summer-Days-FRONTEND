@@ -81,7 +81,7 @@ class MainContainer extends Component {
 
 
     render(){
-        console.log(this.state.allCharacters)
+        
       return(
           <div>
             <NavBar />
@@ -120,7 +120,7 @@ class MainContainer extends Component {
 
                 </Col>
               <Col sm={12}>
-                  <Route exact path='/form' render={() => <CharForm/>}/>
+                  <Route exact path='/form' render={() => <CharForm classList={this.state.classList}/>}/>
                   {/* <Route exact path="/login" render={Login} />  */}
              </Col>
             </Row>   
