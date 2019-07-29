@@ -3,7 +3,7 @@ import CharacterContainer from './CharacterContainer'
 import CharacterCardPreview from '../Components/CharacterCardPreview'
 import CharForm from '../Components/CharForm'
 import NavBar from '../Components/Navibar'
-import Footer from '../Components/Footer'
+
 import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route} from 'react-router-dom'
@@ -79,10 +79,10 @@ class MainContainer extends Component {
             <Col sm={12}>
                   {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
                     {
-                    this.state.allCharacters.length >0 ? 
+                    this.state.allCharacters.length > 0 ? 
                     <Userview 
                         getProficiencyMod={this.getProficiencyMod} 
-                        character={this.state.allCharacters[1]}
+                        character={this.state.allCharacters[2]}
                     /> 
                     :
                     null
@@ -114,7 +114,6 @@ class MainContainer extends Component {
                   {/* <Route exact path="/login" render={Login} />  */}
              </Col>
             </Row>   
-            <Footer />
           </div> 
         
     ) 
