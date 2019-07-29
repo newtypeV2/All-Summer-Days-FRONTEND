@@ -76,10 +76,6 @@ class MainContainer extends Component {
       })
     }
 
-
-
-
-
     render(){
         console.log(this.state.allCharacters)
       return(
@@ -88,23 +84,23 @@ class MainContainer extends Component {
             <Row id="mainrow">
             <Col sm={12}>
                   {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
-                    {
-                    this.state.allCharacters.length > 0 ? 
+                  <Route exact path="/Sheet" render={() =>
                     <Userview 
                         getProficiencyMod={this.getProficiencyMod} 
-                        character={this.state.allCharacters[2]}
-                    /> 
-                    :
-                    null
-                    }
+                        character={this.state.selectedCharacter}
+                    />
+                  }/>
+
              </Col>
-            <Col sm={7}>
               <Route exact path="/Characters" render={() => 
+              <React.Fragment>
+            <Col sm={7}>
                 <CharacterContainer 
                   characters={this.state.allCharacters} 
                   selectCharacter={this.selectCharacter}
+                  selectedCharacter={this.state.selectedCharacter}
                 />
-              }/>
+              
               
               {/* <Route exact path="/login" render={Login} />  */}
               </Col>
@@ -114,11 +110,13 @@ class MainContainer extends Component {
                     <CharacterCardPreview 
                       character={this.state.selectedCharacter}
                       getProficiencyMod={this.getProficiencyMod}
+                      showCharacter={this.showCharacter}
                     /> 
                     : 
                     null}
-
                 </Col>
+                </React.Fragment>
+                }/>
               <Col sm={12}>
                   <Route exact path='/form' render={() => <CharForm/>}/>
                   {/* <Route exact path="/login" render={Login} />  */}
