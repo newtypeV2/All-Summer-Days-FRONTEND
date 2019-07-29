@@ -31,8 +31,6 @@ class CharForm extends Component{
     }
      
     getClass = (event) => {
-        let t = this
-        debugger
         let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}})
         this.setState({
           className: name[0],
