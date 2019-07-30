@@ -35,7 +35,9 @@ export default class Login extends React.Component{
                 this.setState({
                     loggedIn : true
                 })
-                this.props.updateLoggedInUser(info.userinfo)
+                let userinfo = JSON.parse(info.userinfo)
+                this.props.updateLoggedInUser(userinfo)
+                this.props.setCharacters(userinfo.characters)
             }else{
                 alert(info.message)
             }

@@ -4,7 +4,6 @@ import {Container, Row, Col} from 'react-bootstrap'
 import Buttons from '../Components/Button'
 // import CharForm from '../Components/CharForm'
 import { Link } from 'react-router-dom';
-import { link } from 'fs';
 
 
 class CharacterContainer extends Component {

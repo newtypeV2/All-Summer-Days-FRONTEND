@@ -10,6 +10,7 @@ import {Route,Redirect} from 'react-router-dom'
 
 const charUrl = `http://${window.location.hostname}:5000/characters`
 const classUrl = `http://${window.location.hostname}:5000/class`
+
 // console.log(window.location.hostname)
 
 
@@ -64,18 +65,30 @@ class MainContainer extends Component {
   }
 
     componentDidMount(){
-      fetch(charUrl)
-        .then(resp => resp.json())
-        .then(characters => this.setState({
-            allCharacters: characters
-        }))
-       fetch(classUrl)
+           fetch(classUrl)
         .then(resp => resp.json())
         .then(classes => 
           this.setState({
             classList: classes
            })
         )
+    }
+
+    // componentDidUpdate = () => {
+    //     let userURL = `http://${window.location.hostname}:5000/users/${this.state.loggedInUser.id}`
+    //     if(this.state.loggedInUser.id){
+    //         fetch(userURL)
+    //         .then(resp => resp.json())
+    //         .then(userData => this.setState({
+    //         allCharacters: userData.characters
+    //         }))
+    //     }
+    // }
+
+    setCharacters = (characters) => {
+        this.setState({
+            allCharacters : characters
+        })
     }
     
     selectCharacter = (characterObj) => {
@@ -98,6 +111,7 @@ class MainContainer extends Component {
                             <Col sm={12}>
                                 <Login 
                                     updateLoggedInUser={this.updateLoggedInUser}
+                                    setCharacters={this.setCharacters}
                                 />
                             </Col>
                         }/>
@@ -137,7 +151,10 @@ class MainContainer extends Component {
                     
                         <Route exact path='/form' render={() => 
                             <Col sm={12}>
-                                <CharForm classList={this.state.classList}/>
+                                <CharForm 
+                                    classList={this.state.classList}
+                                    loggedInUser={this.state.loggedInUser}
+                                />
                             </Col>
                         }/>
                         {/* <Route exact path="/login" render={Login} />  */}
