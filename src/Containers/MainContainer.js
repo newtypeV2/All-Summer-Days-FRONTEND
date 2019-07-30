@@ -150,7 +150,7 @@ class MainContainer extends Component {
                         }/>
                     
                         <Route exact path='/form' render={() => 
-                            <Col sm={12}>
+                            <Col sm={12} className={"alpha60"}>
                                 <CharForm 
                                     classList={this.state.classList}
                                     loggedInUser={this.state.loggedInUser}

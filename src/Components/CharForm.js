@@ -172,7 +172,7 @@ class CharForm extends Component{
        if(this.state.skillNum !== 0){
         return(
           <Form.Group controlId="exampleForm.ControlSelect2" onChange={(event) => this.setClassList(event, theKey, theNum)}>
-              <Form.Label style={{color: 'white'}} >
+              <Form.Label style={{color: 'red'}} >
                 Skills to Choose: {this.state.skillNum}
               </Form.Label>
               <Form.Control as="select">
@@ -268,75 +268,50 @@ class CharForm extends Component{
 
 render(){
  return (
-  <div>
-  <Form onSubmit={this.submitForm}>
+  <div >
+  <Form onSubmit={this.submitForm} >
     <Row>
       <Col sm={3}>
+        
           <Form.Group controlId="formBasicEmail">
-           <Form.Label style={{color: 'white'}} >First Name</Form.Label>
+           <Form.Label style={{color: 'red'}} >First Name</Form.Label>
+           
             <Form.Control type="" placeholder="put name first here" className="firstname" onChange={this.stating}/>
           </Form.Group>
+
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label style={{color: 'white'}} >Last Name</Form.Label>
+            <Form.Label style={{color: 'red'}} >Last Name</Form.Label>
             <Form.Control type="" placeholder="put name last here" className="lastname" onChange={this.stating}/>
           </Form.Group>
-        {this.state.className ? 
-          <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label style={{color: 'white'}}>Character Class</Form.Label>
-             <Form.Control as="text">  
-                <option>{this.state.className.name}</option> 
-             </Form.Control>
-           </Form.Group>
-        :
-          <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
-            <Form.Label style={{color: 'white'}} >Character Class</Form.Label>
-            <Form.Control as="select">
-              <option>Please Choose</option>
-              <option>Barbarian</option>
-              <option>Bard</option>
-              <option>Cleric</option>
-              <option>Druid</option>
-              <option>Fighter</option>
-              <option>Monk</option>
-              <option>Paladin</option>
-              <option>Ranger</option>
-              <option>Rogue</option>
-              <option>Sorcerer</option>
-              <option>Warlock</option>
-              <option>Wizard</option>
-            </Form.Control>
-          </Form.Group>}
+          
 
 
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label style={{color: 'white'}}>Level</Form.Label>
+            <Form.Label style={{color: 'red'}}>Level</Form.Label>
             <Form.Control as="text">
               <option>2</option>
             </Form.Control>
           </Form.Group>
-        <AbilityScore name={'strength'} abilityScore={this.state.abilityScore} score={this.state.character.strength} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
-        <AbilityScore name={'dexterity'} abilityScore={this.state.abilityScore} score={this.state.character.dexterity} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
-        <AbilityScore name={'constitution'}  abilityScore={this.state.abilityScore} score={this.state.character.constitution} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
-        <AbilityScore name={'intelligence'} abilityScore={this.state.abilityScore} score={this.state.character.intelligence} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
-        <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
-        <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'white'}} >Age</Form.Label>
+            <Form.Label style={{color: 'red'}} >Age</Form.Label>
             <Form.Control type="number" className="age" onChange={this.stating}>
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'white'}} >Height In Centimeters</Form.Label>
+            <Form.Label style={{color: 'red'}} >Height In Centimeters</Form.Label>
             <Form.Control type="number" className="height" onChange={this.stating}>
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'white'}} >Weight In Lbs</Form.Label>
+            <Form.Label style={{color: 'red'}} >Weight In Lbs</Form.Label>
             <Form.Control type="number" className="weight" onChange={this.stating}>
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'white'}} >Eye Color</Form.Label>
+      </Col>
+
+      <Col sm={3}>
+      <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label style={{color: 'red'}} >Eye Color</Form.Label>
             <Form.Control as="select" className="eyes" onChange={this.stating}>
               <option>please choose</option>
               <option>Yellow</option>
@@ -362,7 +337,7 @@ render(){
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'white'}} >Skin Color</Form.Label>
+            <Form.Label style={{color: 'red'}} >Skin Color</Form.Label>
             <Form.Control as="select" className="skin" onChange={this.stating}>
             <option>please choose</option>
             <option>Pale</option>
@@ -404,7 +379,7 @@ render(){
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'black'}}>Hair Color</Form.Label>
+            <Form.Label style={{color: 'red'}}>Hair Color</Form.Label>
             <Form.Control as="select" className="hair" onChange={this.stating}>
             <option>please choose</option>
             <option>Black</option>
@@ -442,11 +417,11 @@ render(){
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label style={{color: 'black'}} >Background</Form.Label>
+            <Form.Label style={{color: 'red'}} >Background</Form.Label>
             <Form.Control as="textarea" rows="3" className="background" onChange={this.stating}/>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label style={{color: 'black'}} >Alignment</Form.Label>
+            <Form.Label style={{color: 'red'}} >Alignment</Form.Label>
             <Form.Control as="select" className="alignment" onChange={this.stating}>
             <option>please choose</option>
               <option>Lawful Good</option>
@@ -459,16 +434,52 @@ render(){
               <option>Chaotic Evil</option>
             </Form.Control>
           </Form.Group>
-        {this.state.className ? this.displaySkillProfs() : null}
-        {this.state.className ? this.displayInstProfs() : null}
-        {this.state.className ? this.displayToolsProfs() : null}
+      </Col>  
+
+      <Col sm={3}>
+      {this.state.className ? 
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label style={{color: 'red'}}>Character Class</Form.Label>
+             <Form.Control as="text">  
+                <option>{this.state.className.name}</option> 
+             </Form.Control>
+           </Form.Group>
+        :
+          <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
+            <Form.Label style={{color: 'red'}} >Character Class</Form.Label>
+            <Form.Control as="select">
+              <option>Please Choose</option>
+              <option>Barbarian</option>
+              <option>Bard</option>
+              <option>Cleric</option>
+              <option>Druid</option>
+              <option>Fighter</option>
+              <option>Monk</option>
+              <option>Paladin</option>
+              <option>Ranger</option>
+              <option>Rogue</option>
+              <option>Sorcerer</option>
+              <option>Warlock</option>
+              <option>Wizard</option>
+            </Form.Control>
+          </Form.Group>}
+          {this.state.className ? this.displaySkillProfs() : null}
+          {this.state.className ? this.displayInstProfs() : null}
+          {this.state.className ? this.displayToolsProfs() : null}
+        <AbilityScore name={'Strength'} abilityScore={this.state.abilityScore} score={this.state.character.strength} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+        <AbilityScore name={'Dexterity'} abilityScore={this.state.abilityScore} score={this.state.character.dexterity} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+        <AbilityScore name={'Constitution'}  abilityScore={this.state.abilityScore} score={this.state.character.constitution} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+        <AbilityScore name={'Intelligence'} abilityScore={this.state.abilityScore} score={this.state.character.intelligence} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+        <AbilityScore name={'Wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+        <AbilityScore name={'Charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+
         <Button variant="primary" type="submit" style={{ width: '10rem' }}>
           Submit
         </Button>
-        </Col>
-
+        
+      </Col>
       <Col sm={3}>
-        <Card border="primary" style={{ width: '10rem' }}>
+      <Card border="primary" style={{ width: '10rem' }}>
           <Card.Body>
             <Card.Title> Points Left: {this.state.abilityScore}</Card.Title>
           </Card.Body>

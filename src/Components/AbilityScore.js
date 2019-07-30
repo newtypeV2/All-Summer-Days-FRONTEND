@@ -44,11 +44,8 @@ const AbilityScore = (props) => {
        
         <Form.Group controlId="formGridCity" onChange={props.setScore} >
             
-        <Form.Label style={{color: 'white'}}>{props.name}  
+        <Form.Label style={{color: 'red'}}>{props.name}  
         
-        <Button value={props.score} onClick={(event) => props.buy(event, props)}>+</Button>
-        {" "} {" "}
-        <span>Cost To Increase: {cost(props.score)}</span>
         
         </Form.Label>
         
@@ -57,7 +54,11 @@ const AbilityScore = (props) => {
          <option className={props.name} value={props.score}>{props.score}</option> 
               
         </Form.Control>
-       
+       <Form.Label >
+       <Button value={props.score} onClick={(event) => props.buy(event, props)}>+</Button>
+        {" "} {" "}
+        <span style={{color: 'purple'}}>Cost To Increase: {cost(props.score)}</span>
+       </Form.Label>
       </Form.Group>
       
     

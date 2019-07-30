@@ -37,3 +37,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.alpha60 {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
