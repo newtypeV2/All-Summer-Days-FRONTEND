@@ -137,7 +137,7 @@ class MainContainer extends Component {
                     
                         <Route exact path='/form' render={() => 
                             <Col sm={12}>
-                                <CharForm/>
+                                <CharForm classList={this.state.classList}/>
                             </Col>
                         }/>
                         {/* <Route exact path="/login" render={Login} />  */}
