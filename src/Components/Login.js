@@ -47,6 +47,7 @@ export default class Login extends React.Component{
         console.log(this.props)
         return (
                  this.state.loggedIn ? <Redirect to="/characters" /> :
+                <div className="loginDiv">
                     <Form>
                     <Form.Group controlId="formGroupUsername">
                         <Form.Label>Username</Form.Label>
@@ -58,7 +59,7 @@ export default class Login extends React.Component{
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={this.loginHandler} onSubmit={this.loginHandler}>Submit</Button>
                     </Form>
-                
+                </div>
             )
     }
 }
