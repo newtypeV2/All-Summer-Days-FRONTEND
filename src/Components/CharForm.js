@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
+import ImageUploader from 'react-images-upload';
 import {Form, Col, Card, Row, Button} from 'react-bootstrap';
 import AbilityScore from './AbilityScore'
 class CharForm extends Component{
     state = {
+        pictures: [],
         chosen: [],
         skills: null,
         instr: null,  
@@ -33,9 +35,19 @@ class CharForm extends Component{
             hair: "",
             background: "",
             alignment: "",
-            proficiency_ids: []  
+            proficiency_ids: [], 
+            avatar: [] 
         }
     }
+
+    onDrop = (picture) => {
+      this.setState({
+        character: {
+          ...this.state.character,
+          avatar: this.state.character.avatar.concat(picture)}
+      });
+  }
+
         displayProf = () => {
          return this.state.chosen.map(choose => {
             return(
@@ -46,6 +58,7 @@ class CharForm extends Component{
 
 
        pointBuy = (cost, num, props) => {
+         debugger
         let obj = Object.keys(this.state.character)
         let name = obj.filter(key => {if(key === props.name){return key}else{return null}})
         if(this.state.abilityScore < cost){
@@ -469,6 +482,15 @@ render(){
               </ul>
             </Card.Body>
         </Card>
+        
+        <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+            />
+
       </Col>
     </Row>
   </Form> 
