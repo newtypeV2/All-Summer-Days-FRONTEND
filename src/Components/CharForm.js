@@ -3,12 +3,18 @@ import {Form, Col, Card, Row, Button} from 'react-bootstrap';
 import AbilityScore from './AbilityScore'
 class CharForm extends Component{
     state = {
-        choices: [0, 15, 14, 13, 12, 10, 8],
-        ClassName: {}, 
+        chosen: [],
+        skills: null,
+        instr: null,  
+        tools: null, 
+        className: null, 
+        skillNum: 0, 
+        intrNum: 0, 
+        toolNum: 0,
         abilityScore: 27,
         character: {
-            firstName: "",
-            lastName: "", 
+            firstname: "",
+            lastname: "", 
             char_class_id: null, 
             level: 2,
             strength: 8,
@@ -26,56 +32,34 @@ class CharForm extends Component{
             skin: "",
             hair: "",
             background: "",
-            alignment: ""
+            alignment: "",
+            proficiency_ids: []  
         }
     }
-     
-    getClass = (event) => {
-        let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}})
-        this.setState({
-          className: name[0],
-          character: {
-              ...this.state.character,
-              char_class_id: name[0].id
-          }
-        
-        })
-      } 
-   
-    //   setScore = (event) => {
-    //     let t = this
-    //     let num = parseInt(event.target.value)
-    //     let scores = this.state.choices.filter(choice => {return choice != event.target.value})
-    //     let nuNum = this.state.abilityScore.length - num
-    //     let obj = Object.keys(this.state.character)
-    //     let newObj = obj.filter(key => {if(key === event.target.children[0].className){return key}else{}})
-    //     let ability = newObj[0]
-        
-    //     debugger 
-    //     this.setState({
-    //     choices: scores, 
-    //     //  abilityScore:  [...Array(nuNum).keys()],
-    //      character: {
-    //         ...this.state.character,
-    //         [ability]: num   
-    //      }
-    //     })
-    // }
-         
+        displayProf = () => {
+         return this.state.chosen.map(choose => {
+            return(
+             <li>{choose}</li>
+            )
+          })
+        }
+
+
        pointBuy = (cost, num, props) => {
         let obj = Object.keys(this.state.character)
-        let name = obj.filter(key => {if(key === props.name){return key}else{}})
-        if(this.state.abilityScore === 0){
-            alert("You Have No More Points!")
+        let name = obj.filter(key => {if(key === props.name){return key}else{return null}})
+        if(this.state.abilityScore < cost){
+            alert("You Have Do Not Have Enough Points!")
         }else{
         this.setState({
              abilityScore: this.state.abilityScore - cost,
              character: {
                  ...this.state.character,
                  [name]: num + 1
-             }
-        })
-    }
+                }
+               })
+            }
+            
        } 
        
        pointCost = (event, props) => {
@@ -111,32 +95,168 @@ class CharForm extends Component{
         else if(num === 15){
          cost = 9
          return this.pointBuy(cost, num, props)
-        }
-
-        
-        
+        }  
        }
             
+    getClass = (event) => {
+      let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}else{return null}})
+      let skill = name[0].choose_proficiencies[0]
+      let instruments = name[0].choose_proficiencies[1] ? name[0].choose_proficiencies[1] : null
+      let tools = name[0].choose_proficiencies[2] ? name[0].choose_proficiencies[2] : null
+      let num1 = skill.slice(-1)[0].choose
+      let num2 = instruments ? instruments.slice(-1)[0].choose : 0
+      let num3 = tools ? tools.slice(-1)[0].choose : 0
+      this.setState({
+        skills: skill,
+        instr: instruments,
+        tools: tools, 
+        skillNum: num1,
+        instrNum: num2,
+        toolNum: num3, 
+        className: name[0],
+        character: {
+          ...this.state.character,
+          hitpoints: parseInt(name[0].hit_die),
+          max_hp: parseInt(name[0].hit_die),
+          char_class_id: name[0].id
+        } 
+      })   
       
+    } 
+
+    setClassList = (event, theKey, theNum) =>{
+      let keyMe = theKey[0]
+      let newestName = this.state.className.choose_proficiencies.map(arr => {
+        return arr.filter(prof => {if(prof.name === event.target.value){
+          return prof
+        }else{return null}
+        })
+      })   
+      let newestArr = newestName.filter(arr => {return arr.length !== 0})
+ 
+      if(this.state.character.proficiency_ids.includes(newestArr[0][0].id)){
+        alert("Already Selected")
+        }else{
+          this.setState({
+            chosen: [...this.state.chosen, event.target.value],
+            [keyMe]: theNum,
+            className: {...this.state.className},
+            character: {
+            ...this.state.character,
+              proficiency_ids: [ newestArr[0][0].id, ...this.state.character.proficiency_ids]
+            }
+           })
+        }  
+     }
+    
+     displaySkillProfs = () =>{
+      let keys = Object.keys(this.state)
+      let theKey = keys.filter(key => {return key==='skillNum'})
+      let theNum = this.state.skillNum - 1
+       if(this.state.skillNum !== 0){
+        
+        return(<Form.Group controlId="exampleForm.ControlSelect2" onChange={(event) => this.setClassList(event, theKey, theNum)}>
+            <Form.Label style={{color: 'white'}} >Skills to Choose: {this.state.skillNum}</Form.Label>
+            <Form.Control as="select">
+              <option>please choose</option>
+          {this.state.className.choose_proficiencies[0].map(prof =>
+            <option key={prof.id} value={prof.name}>{prof.name}</option>
+          )}
+          </Form.Control>
+        </Form.Group>
+        
+        )}else{return }
+        
+      }
+
+     displayInstProfs = () => {
+      let keys = Object.keys(this.state)
+      let theKey = keys.filter(key => {return key==='instrNum'})
+      let theNum = this.state.instrNum - 1
+      if(this.state.instrNum !== 0){
+        return(<Form.Group controlId="exampleForm.ControlSelect2" onChange={(event) => this.setClassList(event, theKey, theNum)}>
+            <Form.Label style={{color: 'white'}}>Intruments to Choose: {this.state.instrNum}</Form.Label>
+            <Form.Control as="select">
+            <option>please choose</option>
+          {this.state.className.choose_proficiencies[1].map(prof =>
+            <option key={prof.id} value={prof.name}>{prof.name}</option>
+          )}
+          </Form.Control>
+        </Form.Group>
+        
+        )}else{return }
+      
+        
+      }
+    
+
+    displayToolsProfs = () => {
+      let keys = Object.keys(this.state)
+      let theKey = keys.filter(key => {return key==='toolNum'})
+      let theNum = this.state.toolNum - 1
+      if(this.state.toolNum !== 0){
+        return(<Form.Group controlId="exampleForm.ControlSelect2" onChange={(event) => this.setClassList(event, theKey, theNum)}>
+            <Form.Label style={{color: 'white'}} >Tools to Choose: {this.state.toolNum}</Form.Label>
+            <Form.Control as="select">
+            <option>please choose</option>
+          {this.state.className.choose_proficiencies[2].map(prof =>
+            <option key={prof.id} value={prof.name}>{prof.name}</option>
+          )}
+          </Form.Control>
+        </Form.Group>
+        )}else{return}      
+    }
+
+    stating = (event) => {
+      let num = parseInt(event.target.value) ? parseInt(event.target.value) : event.target.value
+      let name = event.target.classList[0]
+      this.setState({
+        character: {
+          ...this.state.character,
+        [name]: num
+        }
+      })
+    }
+
+    submitForm = (event) => {
+      event.preventDefault()
+      let character = this.state.character
+      const pProf = this.state.className.passive_proficiencies.map(prof => prof.id)
+      const sThrows = this.state.className.saving_throws.map(prof => prof.id)
+      character.proficiency_ids = [...character.proficiency_ids,...pProf,...sThrows]
+      debugger
+      fetch(`http://${window.location.hostname}:3000/characters`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        },
+        body: JSON.stringify({
+            character
+        })
+      })
+      .then(resp => resp.json())
+      .then(data => console.log(data))
+    }
 
      render(){
  return (
      <div>
-
-    <Form>
+    <Form onSubmit={this.submitForm}>
         <Row>
         <Col sm={3}>
     <Form.Group controlId="formHorizontalEmail">
     <Form.Label style={{color: 'white'}} >First Name</Form.Label>
-    <Form.Control type="" placeholder="put name first here" />
+    <Form.Control type="" placeholder="put name first here" className="firstname" onChange={this.stating}/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlInput1">
     <Form.Label style={{color: 'white'}} >Last Name</Form.Label>
-    <Form.Control type="" placeholder="put name last here" />
+    <Form.Control type="" placeholder="put name last here" className="lastname" onChange={this.stating}/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
     <Form.Label style={{color: 'white'}} >Character Class</Form.Label>
     <Form.Control as="select">
+      <option>Please Choose</option>
       <option>Barbarian</option>
       <option>Bard</option>
       <option>Cleric</option>
@@ -164,8 +284,23 @@ class CharForm extends Component{
   <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label style={{color: 'white'}} >Age</Form.Label>
+    <Form.Control type="number" className="age" onChange={this.stating}>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label style={{color: 'white'}} >Height In Centimeters</Form.Label>
+    <Form.Control type="number" className="height" onChange={this.stating}>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label style={{color: 'white'}} >Weight In Lbs</Form.Label>
+    <Form.Control type="number" className="weight" onChange={this.stating}>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'white'}} >Eye Color</Form.Label>
-    <Form.Control as="select" >
+    <Form.Control as="select" className="eyes" onChange={this.stating}>
       <option>Yellow</option>
       <option>Amber</option>
       <option>Brown</option>
@@ -190,7 +325,7 @@ class CharForm extends Component{
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'white'}} >Skin Color</Form.Label>
-    <Form.Control as="select" >
+    <Form.Control as="select" className="skin" onChange={this.stating}>
     <option>Pale</option>
       <option>Fair</option>
       <option>Light</option>
@@ -230,7 +365,7 @@ class CharForm extends Component{
     </Form.Control>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label style={{color: 'black'}} >Hair Color</Form.Label>
+    <Form.Label style={{color: 'black'}} className="hair" onChange={this.stating}>Hair Color</Form.Label>
     <Form.Control as="select" >
     <option>Black</option>
       <option>Gray</option>
@@ -268,11 +403,11 @@ class CharForm extends Component{
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
     <Form.Label style={{color: 'black'}} >Background</Form.Label>
-    <Form.Control as="textarea" rows="3" />
+    <Form.Control as="textarea" rows="3" className="background" onChange={this.stating}/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'black'}} >Alignment</Form.Label>
-    <Form.Control as="select" >
+    <Form.Control as="select" className='alignment' onChange={this.stating}>
       <option>Lawful Good</option>
       <option>Neutral Good </option>
       <option>Chaotic Good </option>
@@ -283,28 +418,29 @@ class CharForm extends Component{
       <option>Chaotic Evil</option>
     </Form.Control>
   </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label style={{color: 'white'}} >Proficiencies</Form.Label>
-    <Form.Control as="select">
-      <option>{}</option>
-      <option>{}</option>
-      <option>{}</option>
-      <option>{}</option>
-      <option>{}</option>
-      <option>{}</option>
-      <option>{}</option>
-    </Form.Control>
-  </Form.Group>
+  {this.state.className ? this.displaySkillProfs() : null}
+  {this.state.className ? this.displayInstProfs() : null}
+  {this.state.className ? this.displayToolsProfs() : null}
+  <Button variant="primary" type="submit" style={{ width: '10rem' }}>
+    Submit
+  </Button>
   </Col>
-  <Col sm={3}></Col>
-  <Col sm={3}></Col>
-  
+
   <Col sm={3}>
   <Card border="primary" style={{ width: '10rem' }}>
     <Card.Body>
       <Card.Title> Points Left: {this.state.abilityScore}</Card.Title>
     </Card.Body>
   </Card>
+  <br></br>
+  <Card border="primary" style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title> Chosen Proficiences:</Card.Title>
+        <ul>
+          {this.displayProf()}
+        </ul>
+      </Card.Body>
+    </Card>
   </Col>
   </Row>
   

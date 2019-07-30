@@ -3,36 +3,36 @@ import {Form, Button} from 'react-bootstrap';
 const AbilityScore = (props) => {
 
   const cost = (num) => {
-        let cost = 0
+    
         if(num === 8){
           
-          return cost = 0}
+          return  0}
         else if(num === 9){
           
-          return cost = 1
+          return 1
         }
         else if(num === 10){
            
-           return cost = 2} 
+           return  2} 
 
         else if(num === 11){
-           return cost = 3
+           return  3
            
         }
         else if(num === 12){
-         return cost = 4
+         return  4
           
         }
         else if(num === 13){
-          return cost = 5
+          return  5
           
         }
         else if(num === 14){
-         return cost = 7
+         return 7
           
         }
         else if(num === 15){
-         return cost = 9
+         return  9
          
         }
 
