@@ -1,14 +1,13 @@
 import React from 'react'
 import {Navbar} from 'react-bootstrap'
 
-const Navibar = () => {
+const Navibar = (props) => {
     return(
           <Navbar bg={'dark'} variant={'dark'}>
-              <Navbar.Brand href="#home">All Summer Days</Navbar.Brand>
-                <Navbar.Toggle />
+              <Navbar.Brand>All Summer Days</Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text>
-                Signed in as: <a href="#login">Peter/Gian</a>
+                {props.loggedInUser.username ? props.loggedInUser.username : "Login"} 
                 </Navbar.Text>
               </Navbar.Collapse>
             </Navbar>

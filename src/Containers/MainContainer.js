@@ -3,21 +3,28 @@ import CharacterContainer from './CharacterContainer'
 import CharacterCardPreview from '../Components/CharacterCardPreview'
 import CharForm from '../Components/CharForm'
 import NavBar from '../Components/Navibar'
-
+import Login from '../Components/Login'
 import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
-import {Route} from 'react-router-dom'
+import {Route,Redirect} from 'react-router-dom'
 
-const url = `http://${window.location.hostname}:5000/characters`
+const charUrl = `http://${window.location.hostname}:5000/characters`
 const classUrl = `http://${window.location.hostname}:5000/class`
-console.log(window.location.hostname)
+// console.log(window.location.hostname)
 
 
 class MainContainer extends Component {
     state = {
         allCharacters: [],
         selectedCharacter: {},
-        classList: []  
+        classList: [],
+        loggedInUser:{}
+    }
+
+    updateLoggedInUser = (user) => {
+        this.setState({
+            loggedInUser : user
+        })
     }
 
     getProficiencyMod = (stat) => {
@@ -57,7 +64,7 @@ class MainContainer extends Component {
   }
 
     componentDidMount(){
-      fetch(url)
+      fetch(charUrl)
         .then(resp => resp.json())
         .then(characters => this.setState({
             allCharacters: characters
@@ -77,57 +84,66 @@ class MainContainer extends Component {
       })
     }
 
-
-
-
-
     render(){
-        
+        // console.log(this.state.allCharacters)
       return(
-          <div>
-            <NavBar />
-            <Row id="mainrow">
-            <Col sm={12}>
-                  {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
-                    {
-                    this.state.allCharacters.length > 0 ? 
-                    <Userview 
-                        getProficiencyMod={this.getProficiencyMod} 
-                        character={this.state.allCharacters[2]}
-                    /> 
-                    :
-                    null
-                    }
-             </Col>
-            <Col sm={7}>
-              <Route exact path="/Characters" render={() => 
-                <CharacterContainer 
-                  characters={this.state.allCharacters} 
-                  selectCharacter={this.selectCharacter}
+            <div>
+                <NavBar 
+                    loggedInUser={this.state.loggedInUser}
                 />
-              }/>
-              
-              {/* <Route exact path="/login" render={Login} />  */}
-              </Col>
-              <Col sm={5}>
+                <Row id="mainrow">
+                        {this.state.loggedInUser.username ? <Redirect to="/characters"/> : <Redirect to="/login"/>}
+                        {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
+                        <Route exact path="/login" render={() =>
+                            <Col sm={12}>
+                                <Login 
+                                    updateLoggedInUser={this.updateLoggedInUser}
+                                />
+                            </Col>
+                        }/>
+                        <Route exact path="/sheet" render={() =>
+                            <Col sm={12}>
+                                <Userview 
+                                    getProficiencyMod={this.getProficiencyMod} 
+                                    character={this.state.selectedCharacter}
+                                />
+                            </Col>
+                        }/>
+                        <Route exact path="/characters" render={() => 
+                            <React.Fragment>
+                                <Col sm={7}>
+                                    <CharacterContainer 
+                                        characters={this.state.allCharacters} 
+                                        selectCharacter={this.selectCharacter}
+                                        selectedCharacter={this.state.selectedCharacter}
+                                    />
+                                
+                                
+                                {/* <Route exact path="/login" render={Login} />  */}
+                                </Col>
+                                <Col sm={5}>
 
-                  {this.state.selectedCharacter.id ? 
-                    <CharacterCardPreview 
-                      character={this.state.selectedCharacter}
-                      getProficiencyMod={this.getProficiencyMod}
-                    /> 
-                    : 
-                    null}
-
-                </Col>
-              <Col sm={12}>
-                  <Route exact path='/form' render={() => <CharForm classList={this.state.classList}/>}/>
-                  {/* <Route exact path="/login" render={Login} />  */}
-             </Col>
-            </Row>   
-
-          </div> 
-        
+                                    {this.state.selectedCharacter.id ? 
+                                        <CharacterCardPreview 
+                                        character={this.state.selectedCharacter}
+                                        getProficiencyMod={this.getProficiencyMod}
+                                        showCharacter={this.showCharacter}
+                                        /> 
+                                        : 
+                                        null}
+                                </Col>
+                            </React.Fragment>
+                        }/>
+                    
+                        <Route exact path='/form' render={() => 
+                            <Col sm={12}>
+                                <CharForm/>
+                            </Col>
+                        }/>
+                        {/* <Route exact path="/login" render={Login} />  */}
+                    
+                </Row>   
+            </div>     
     ) 
   
     }
