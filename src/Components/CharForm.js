@@ -58,9 +58,9 @@ class CharForm extends Component{
 
 
        pointBuy = (cost, num, props) => {
-         debugger
+         
         let obj = Object.keys(this.state.character)
-        let name = obj.filter(key => {if(key === props.name){return key}else{return null}})
+        let name = obj.filter(key => {if(key === props.name.toLowerCase()){return key}else{return null}})
         if(this.state.abilityScore < cost){
             alert("You Have Do Not Have Enough Points!")
         }else{
@@ -72,7 +72,7 @@ class CharForm extends Component{
                 }
                })
             }
-            
+            debugger
        } 
        
        pointCost = (event, props) => {

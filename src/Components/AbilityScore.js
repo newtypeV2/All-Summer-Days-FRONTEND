@@ -55,9 +55,9 @@ const AbilityScore = (props) => {
               
         </Form.Control>
        <Form.Label >
-       <Button value={props.score} onClick={(event) => props.buy(event, props)}>+</Button>
+       <Button variant="outline-info" value={props.score} onClick={(event) => props.buy(event, props)}>+</Button>
         {" "} {" "}
-        <span style={{color: 'purple'}}>Cost To Increase: {cost(props.score)}</span>
+        <span style={{color: 'cyan'}}>Cost To Increase: {cost(props.score)}</span>
        </Form.Label>
       </Form.Group>
       
