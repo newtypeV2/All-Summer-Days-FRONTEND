@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import ImageUploader from 'react-images-upload';
 import {Form, Col, Card, Row, Button} from 'react-bootstrap';
 import AbilityScore from './AbilityScore'
+
 class CharForm extends Component{
     state = {
+        redirect: false,
         pictures: [],
         chosen: [],
         skills: null,
@@ -263,10 +265,14 @@ class CharForm extends Component{
         })
       })
       .then(resp => resp.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.props.newChar(data)
+        this.props.routeProps.history.push('/characters')
+      })
     }
 
 render(){
+  debugger
  return (
   <div >
   <Form onSubmit={this.submitForm} >
@@ -473,10 +479,12 @@ render(){
         <AbilityScore name={'Wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
         <AbilityScore name={'Charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
 
+       
         <Button variant="primary" type="submit" style={{ width: '10rem' }}>
           Submit
         </Button>
         
+
       </Col>
       <Col sm={3}>
       <Card border="primary" style={{ width: '10rem' }}>

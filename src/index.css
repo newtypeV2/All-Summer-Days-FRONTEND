@@ -175,3 +175,7 @@ div.loginDiv{
   border: 2px solid black;
   position: absolute;
 }
+
+div.cardPreview{
+  margin: 1rem;
+}

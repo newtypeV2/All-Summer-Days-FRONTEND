@@ -8,7 +8,7 @@ import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route,Redirect} from 'react-router-dom'
 
-const charUrl = `http://${window.location.hostname}:5000/characters`
+// const charUrl = `http://${window.location.hostname}:5000/characters`
 const classUrl = `http://${window.location.hostname}:5000/class`
 
 // console.log(window.location.hostname)
@@ -74,6 +74,14 @@ class MainContainer extends Component {
         )
     }
 
+    deleteCharacter = () => {
+        fetch(`http://${window.location.hostname}:5000/characters/${this.state.selectedCharacter.id}`, {
+            method: 'DELETE'
+        })
+        .then(resp => resp.json())
+        .then(data => this.updateAllCharacter(data))
+   }
+
     // componentDidUpdate = () => {
     //     let userURL = `http://${window.location.hostname}:5000/users/${this.state.loggedInUser.id}`
     //     if(this.state.loggedInUser.id){
@@ -97,6 +105,20 @@ class MainContainer extends Component {
       })
     }
 
+    updateAllCharacter = (delCharacter) => {
+        this.setState({
+            allCharacters: this.state.allCharacters.filter(char => char.id !== delCharacter.id),
+            selectedCharacter: {}
+        })
+    }
+
+    addtoAllCharacters = (newCharacter) => {
+        this.setState({
+            allCharacters: [...this.state.allCharacters, newCharacter],
+            redirectToCharPage : true
+        })
+    }
+
     render(){
         // console.log(this.state.allCharacters)
       return(
@@ -115,7 +137,7 @@ class MainContainer extends Component {
                                 />
                             </Col>
                         }/>
-                        <Route exact path="/sheet" render={() =>
+                        <Route exact path="/stats" render={() =>
                             <Col sm={12}>
                                 <Userview 
                                     getProficiencyMod={this.getProficiencyMod} 
@@ -127,6 +149,8 @@ class MainContainer extends Component {
                             <React.Fragment>
                                 <Col sm={7}>
                                     <CharacterContainer 
+                                
+                                        updateAllCharacter={this.updateAllCharacter}
                                         characters={this.state.allCharacters} 
                                         selectCharacter={this.selectCharacter}
                                         selectedCharacter={this.state.selectedCharacter}
@@ -142,6 +166,7 @@ class MainContainer extends Component {
                                         character={this.state.selectedCharacter}
                                         getProficiencyMod={this.getProficiencyMod}
                                         showCharacter={this.showCharacter}
+                                        deleteCharacter={this.deleteCharacter}
                                         /> 
                                         : 
                                         null}
@@ -149,9 +174,12 @@ class MainContainer extends Component {
                             </React.Fragment>
                         }/>
                     
-                        <Route exact path='/form' render={() => 
+                        <Route exact path='/form' render={(props) => 
                             <Col sm={12}>
-                                <CharForm 
+                                <CharForm
+                                    routeProps={props} 
+                                    newChar={this.addtoAllCharacters}
+                                    redirectToCharPage={this.state.redirectToCharPage}
                                     classList={this.state.classList}
                                     loggedInUser={this.state.loggedInUser}
                                 />

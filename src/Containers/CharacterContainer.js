@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CharacterCard from '../Components/CharacterCard'
-import {Container, Row, Col} from 'react-bootstrap'
+import {Container, Row} from 'react-bootstrap'
 import Buttons from '../Components/Button'
 // import CharForm from '../Components/CharForm'
 import { Link } from 'react-router-dom';
@@ -16,9 +16,9 @@ class CharacterContainer extends Component {
             <CharacterCard key={character.id} character={character} onClickHandler={this.props.selectCharacter}/> )
     }
 
-    newCharacter = (event) => {
-     
-    }
+    
+
+        
 
 
     render(){
@@ -27,7 +27,7 @@ class CharacterContainer extends Component {
            
             <div style={{marginTop: "2rem"}}>
            
-                 <Row className="wrapper">
+                 <Row className="justify-content-lg-center">
                      <Link to={'/form'}>
                      <Buttons clickHandler={this.newCharacter} title={"New Character"}/>
                      </Link>
@@ -38,16 +38,7 @@ class CharacterContainer extends Component {
                     {this.displayCharacters()}
                 </Row>  
             </Container>
-            <Row className="wrapper">
-                <Col>
-                    <Link to={this.props.selectedCharacter.id ? '/sheet' : '/characters'}>
-                    <Buttons clickHandler={this.props.showCharacter} title={"Show Character"}/>
-                    </Link>
-                </Col>
-                <Col className="wrapper">
-                    <Buttons title={"Something"}/>
-                </Col>
-            </Row>  
+            
             </div>
 
         )

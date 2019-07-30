@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap';
 const Buttons = (props) => {
     return (
    
-        <Button variant="primary" size="lg" onClick={props.clickHandler}>
+        <Button variant="primary" size="sm" onClick={props.clickHandler}>
             {props.title}
          </Button>
    

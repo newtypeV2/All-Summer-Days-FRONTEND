@@ -1,9 +1,12 @@
 import React from 'react';
-import {Card} from 'react-bootstrap/';
+import {Card, Row, Col} from 'react-bootstrap';
+import Buttons from '../Components/Button';
+import { Link } from 'react-router-dom';
 
 const CharacterCardPreview = (props) => {
 
         return(
+            <div>
             <Card style={{width: "24rem",color: "white", marginTop: "3.7rem", marginLeft: "10rem", padding: "1rem"}}bg={'dark'} variant={'dark'}>
             <Card.Img variant="top" src={props.character.avatar_available ? props.character.image_url : "https://via.placeholder.com/200"} />
             <Card.Body>
@@ -39,6 +42,18 @@ const CharacterCardPreview = (props) => {
             <small className="text-muted">NOT IN CAMPAIGN</small>
            </Card.Footer>
         </Card>
+        <Row  className="justify-content-lg-center"   >
+            <div className="cardPreview">
+                <Link to="/stats">
+                        <Buttons clickHandler={props.showCharacter} title={"Show Character"}/>
+                </Link>
+            </div>
+            <div className="cardPreview">
+                        <Buttons title={"Delete"} clickHandler={props.deleteCharacter}/>
+            </div>  
+                    
+        </Row>  
+        </div>
         )
     
 } 
