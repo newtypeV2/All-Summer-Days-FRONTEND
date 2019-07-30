@@ -225,7 +225,6 @@ class CharForm extends Component{
       const sThrows = this.state.className.saving_throws.map(prof => prof.id)
       character.proficiency_ids = [...character.proficiency_ids,...pProf,...sThrows]
       character.user_id = this.props.loggedInUser.id
-      debugger
       fetch(`http://${window.location.hostname}:5000/characters`, {
         method: 'POST',
         headers: {
