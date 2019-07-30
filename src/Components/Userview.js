@@ -2,6 +2,7 @@ import React from "react";
 import {Row,Col} from "react-bootstrap"
 
 const Userview = (props) => {
+    if (props.character.id){
     const characterProf = props.character.proficiencies.map(prof => prof.name)
     const modSTR = props.getProficiencyMod(props.character.strength)
     const modDEX = props.getProficiencyMod(props.character.dexterity)
@@ -12,7 +13,6 @@ const Userview = (props) => {
     return(
             <Row className="justify-content-lg-center" id="userviewdiv">
                 <Col sm={12}>
-                {/* <div> */}
                 <div className="charInfo">
                     <div className="mainInfo">
                         <div>Name: {`${props.character.firstname} ${props.character.lastname}`}</div>
@@ -186,12 +186,13 @@ const Userview = (props) => {
                         </table>
                     </div>
                 </div>
-            {/* </div> */}
-
             </div>
             </Col>
-            </Row>
+            </Row> 
     )
+    }else{
+        return null
+    }
 }
 
 export default Userview
