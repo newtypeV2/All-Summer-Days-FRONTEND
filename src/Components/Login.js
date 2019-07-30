@@ -31,7 +31,6 @@ export default class Login extends React.Component{
         })
         .then(res => res.json())
         .then(info => {
-            console.log(info)
             if (info.authenticated === "true"){
                 this.setState({
                     loggedIn : true
@@ -44,7 +43,6 @@ export default class Login extends React.Component{
     }
 
     render(){
-        console.log(this.props)
         return (
                  this.state.loggedIn ? <Redirect to="/characters" /> :
                 <div className="loginDiv">

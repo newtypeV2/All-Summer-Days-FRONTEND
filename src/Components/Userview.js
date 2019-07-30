@@ -27,7 +27,7 @@ const Userview = (props) => {
                         <div>Height: {props.character.height}cm</div>
                         <div>Weight: {props.character.weight}lbs</div>
                     </div>
-                    <img src={props.character.image_url} alt={`${props.character.image_url}`} className="avatar"/>
+                    <img src={props.character.avatar_available ? props.character.image_url : "https://via.placeholder.com/200"} alt={'Avatar'} className="avatar"/>
                 </div>
             <div className="subCont">
                 <div className="charStats">
@@ -142,8 +142,8 @@ const Userview = (props) => {
                                 <td>Perception(Wis)</td>
                             </tr>
                             <tr>
-                                <td className="skillData">{characterProf.includes("Skill: Persuation") ? `● ${modCHA+props.character.level}` : `○ ${modCHA}` } </td>
-                                <td>Persuation(Cha)</td>
+                                <td className="skillData">{characterProf.includes("Skill: Persuasion") ? `● ${modCHA+props.character.level}` : `○ ${modCHA}` } </td>
+                                <td>Persuasion(Cha)</td>
                             </tr>
                             <tr>
                                 <td className="skillData">{characterProf.includes("Skill: Religion") ? `● ${modINT+props.character.level}` : `○ ${modINT}` } </td>
