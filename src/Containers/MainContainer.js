@@ -8,8 +8,8 @@ import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route} from 'react-router-dom'
 
-const url = `http://${window.location.hostname}:3000/characters`
-const classUrl = `http://${window.location.hostname}:3000/class`
+const url = `http://${window.location.hostname}:5000/characters`
+const classUrl = `http://${window.location.hostname}:5000/class`
 console.log(window.location.hostname)
 
 

@@ -99,6 +99,7 @@ class CharForm extends Component{
        }
             
     getClass = (event) => {
+      debugger
       let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}else{return null}})
       let skill = name[0].choose_proficiencies[0]
       let instruments = name[0].choose_proficiencies[1] ? name[0].choose_proficiencies[1] : null
@@ -273,7 +274,7 @@ class CharForm extends Component{
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'white'}} >Level</Form.Label>
-    <Form.Control as="select" >
+    <Form.Control as="text" >
       <option>2</option>
     </Form.Control>
   </Form.Group>
@@ -301,6 +302,7 @@ class CharForm extends Component{
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'white'}} >Eye Color</Form.Label>
     <Form.Control as="select" className="eyes" onChange={this.stating}>
+      <option>Please Choose</option>
       <option>Yellow</option>
       <option>Amber</option>
       <option>Brown</option>
@@ -326,6 +328,7 @@ class CharForm extends Component{
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'white'}} >Skin Color</Form.Label>
     <Form.Control as="select" className="skin" onChange={this.stating}>
+    <option>Please Choose</option>
     <option>Pale</option>
       <option>Fair</option>
       <option>Light</option>
@@ -367,6 +370,7 @@ class CharForm extends Component{
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'black'}} className="hair" onChange={this.stating}>Hair Color</Form.Label>
     <Form.Control as="select" >
+    <option>Please Choose</option>
     <option>Black</option>
       <option>Gray</option>
       <option>Platinum</option>
@@ -408,6 +412,7 @@ class CharForm extends Component{
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'black'}} >Alignment</Form.Label>
     <Form.Control as="select" className='alignment' onChange={this.stating}>
+    <option>Please Choose</option>
       <option>Lawful Good</option>
       <option>Neutral Good </option>
       <option>Chaotic Good </option>

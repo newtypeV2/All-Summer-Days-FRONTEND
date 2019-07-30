@@ -52,7 +52,7 @@ const AbilityScore = (props) => {
         
         </Form.Label>
         
-        <Form.Control as="select">  
+        <Form.Control as="text">  
         
          <option className={props.name} value={props.score}>{props.score}</option> 
               
