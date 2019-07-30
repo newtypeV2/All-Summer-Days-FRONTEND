@@ -179,3 +179,18 @@ div.loginDiv{
 div.cardPreview{
   margin: 1rem;
 }
+
+span.navbar-text{
+  font-size: 3rem;
+  font-family: mg4brush;
+}
+
+span.navbar-brand{
+  font-size: 3rem;
+  font-family: mg4brush;
+}
+
+@font-face {
+  font-family: mg4brush;
+  src: url("./DNDSprites/MGS4Brush.ttf");
+}
