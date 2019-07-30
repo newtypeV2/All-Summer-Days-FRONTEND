@@ -42,7 +42,7 @@ const AbilityScore = (props) => {
 
     return(
        
-        <Form.Group controlId="exampleForm.ControlSelect2" onChange={props.setScore} >
+        <Form.Group controlId="formGridCity" onChange={props.setScore} >
             
         <Form.Label style={{color: 'white'}}>{props.name}  
         
@@ -52,7 +52,7 @@ const AbilityScore = (props) => {
         
         </Form.Label>
         
-        <Form.Control as="select">  
+        <Form.Control as="text">  
         
          <option className={props.name} value={props.score}>{props.score}</option> 
               
