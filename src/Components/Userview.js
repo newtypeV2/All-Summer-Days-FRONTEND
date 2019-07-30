@@ -94,7 +94,7 @@ const Userview = (props) => {
                     <table className="tableSkills">
                     <tbody>
                             <tr>
-                                <td className="skillData">{characterProf.includes("Skill: Acrobatics<") ? `● ${modDEX+props.character.level}` : `○ ${modDEX}` }</td> 
+                                <td className="skillData">{characterProf.includes("Skill: Acrobatics") ? `● ${modDEX+props.character.level}` : `○ ${modDEX}` }</td> 
                                 <td>Acrobatics(Dex)</td>
                             </tr>
                             <tr>
