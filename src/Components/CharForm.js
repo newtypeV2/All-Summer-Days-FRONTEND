@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Col, Card, Row,DropdownButton,Dropdown} from 'react-bootstrap';
+import {Form, Col, Card, Row, Button} from 'react-bootstrap';
 import AbilityScore from './AbilityScore'
 class CharForm extends Component{
     state = {
@@ -115,6 +115,8 @@ class CharForm extends Component{
         className: name[0],
         character: {
           ...this.state.character,
+          hitpoints: parseInt(name[0].hit_die),
+          max_hp: parseInt(name[0].hit_die),
           char_class_id: name[0].id
         } 
       })   
@@ -205,21 +207,37 @@ class CharForm extends Component{
     }
 
     stating = (event) => {
+      let num = parseInt(event.target.value) ? parseInt(event.target.value) : event.target.value
       let name = event.target.classList[0]
       this.setState({
         character: {
           ...this.state.character,
-        [name]: event.target.value
+        [name]: num
         }
       })
-      
+    }
+
+    submitForm = (event) => {
+      event.preventDefault()
+      let character = this.state.character
+      fetch(`http://${window.location.hostname}:3000/characters`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        },
+        body: JSON.stringify({
+            character
+        })
+      })
+      .then(resp => resp.json())
+      .then(data => console.log(data))
     }
 
      render(){
  return (
      <div>
-
-    <Form>
+    <Form onSubmit={this.submitForm}>
         <Row>
         <Col sm={3}>
     <Form.Group controlId="formHorizontalEmail">
@@ -260,6 +278,21 @@ class CharForm extends Component{
   <AbilityScore name={'intelligence'} abilityScore={this.state.abilityScore} score={this.state.character.intelligence} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'wisdom'}  abilityScore={this.state.abilityScore} score={this.state.character.wisdom} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
   <AbilityScore name={'charisma'} abilityScore={this.state.abilityScore} score={this.state.character.charisma} setScore={this.setScore} choice={this.state.choices} buy={this.pointCost}/>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label style={{color: 'white'}} >Age</Form.Label>
+    <Form.Control type="number" className="age" onChange={this.stating}>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label style={{color: 'white'}} >Height In Centimeters</Form.Label>
+    <Form.Control type="number" className="height" onChange={this.stating}>
+    </Form.Control>
+  </Form.Group>
+  <Form.Group controlId="exampleForm.ControlSelect2">
+    <Form.Label style={{color: 'white'}} >Weight In Lbs</Form.Label>
+    <Form.Control type="number" className="weight" onChange={this.stating}>
+    </Form.Control>
+  </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect2">
     <Form.Label style={{color: 'white'}} >Eye Color</Form.Label>
     <Form.Control as="select" className="eyes" onChange={this.stating}>
@@ -383,6 +416,9 @@ class CharForm extends Component{
   {this.state.className ? this.displaySkillProfs() : null}
   {this.state.className ? this.displayInstProfs() : null}
   {this.state.className ? this.displayToolsProfs() : null}
+  <Button variant="primary" type="submit" style={{ width: '10rem' }}>
+    Submit
+  </Button>
   </Col>
 
   <Col sm={3}>
