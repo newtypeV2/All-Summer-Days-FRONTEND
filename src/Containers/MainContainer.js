@@ -8,7 +8,8 @@ import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route} from 'react-router-dom'
 
-const url = `http://${window.location.hostname}:5000/characters`
+const url = `http://${window.location.hostname}:3000/characters`
+const classUrl = `http://${window.location.hostname}:3000/class`
 console.log(window.location.hostname)
 
 
@@ -61,7 +62,7 @@ class MainContainer extends Component {
         .then(characters => this.setState({
             allCharacters: characters
         }))
-       fetch('http://localhost:3000/class')
+       fetch(classUrl)
         .then(resp => resp.json())
         .then(classes => 
           this.setState({

@@ -13,8 +13,8 @@ class CharForm extends Component{
         toolNum: 0,
         abilityScore: 27,
         character: {
-            firstName: "",
-            lastName: "", 
+            firstname: "",
+            lastname: "", 
             char_class_id: null, 
             level: 2,
             strength: 8,
@@ -47,7 +47,7 @@ class CharForm extends Component{
 
        pointBuy = (cost, num, props) => {
         let obj = Object.keys(this.state.character)
-        let name = obj.filter(key => {if(key === props.name){return key}else{}})
+        let name = obj.filter(key => {if(key === props.name){return key}else{return null}})
         if(this.state.abilityScore < cost){
             alert("You Have Do Not Have Enough Points!")
         }else{
@@ -59,6 +59,7 @@ class CharForm extends Component{
                 }
                })
             }
+            
        } 
        
        pointCost = (event, props) => {
@@ -98,7 +99,7 @@ class CharForm extends Component{
        }
             
     getClass = (event) => {
-      let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}})
+      let name = this.props.classList.filter(list => {if(list.name === event.target.value){return list}else{return null}})
       let skill = name[0].choose_proficiencies[0]
       let instruments = name[0].choose_proficiencies[1] ? name[0].choose_proficiencies[1] : null
       let tools = name[0].choose_proficiencies[2] ? name[0].choose_proficiencies[2] : null
@@ -128,7 +129,7 @@ class CharForm extends Component{
       let newestName = this.state.className.choose_proficiencies.map(arr => {
         return arr.filter(prof => {if(prof.name === event.target.value){
           return prof
-        }else{return}
+        }else{return null}
         })
       })   
       let newestArr = newestName.filter(arr => {return arr.length !== 0})
@@ -159,7 +160,7 @@ class CharForm extends Component{
             <Form.Control as="select">
               <option>please choose</option>
           {this.state.className.choose_proficiencies[0].map(prof =>
-            <option value={prof.name}>{prof.name}</option>
+            <option key={prof.id} value={prof.name}>{prof.name}</option>
           )}
           </Form.Control>
         </Form.Group>
@@ -178,7 +179,7 @@ class CharForm extends Component{
             <Form.Control as="select">
             <option>please choose</option>
           {this.state.className.choose_proficiencies[1].map(prof =>
-            <option value={prof.name}>{prof.name}</option>
+            <option key={prof.id} value={prof.name}>{prof.name}</option>
           )}
           </Form.Control>
         </Form.Group>
@@ -199,7 +200,7 @@ class CharForm extends Component{
             <Form.Control as="select">
             <option>please choose</option>
           {this.state.className.choose_proficiencies[2].map(prof =>
-            <option value={prof.name}>{prof.name}</option>
+            <option key={prof.id} value={prof.name}>{prof.name}</option>
           )}
           </Form.Control>
         </Form.Group>
@@ -220,6 +221,10 @@ class CharForm extends Component{
     submitForm = (event) => {
       event.preventDefault()
       let character = this.state.character
+      const pProf = this.state.className.passive_proficiencies.map(prof => prof.id)
+      const sThrows = this.state.className.saving_throws.map(prof => prof.id)
+      character.proficiency_ids = [...character.proficiency_ids,...pProf,...sThrows]
+      debugger
       fetch(`http://${window.location.hostname}:3000/characters`, {
         method: 'POST',
         headers: {
@@ -242,11 +247,11 @@ class CharForm extends Component{
         <Col sm={3}>
     <Form.Group controlId="formHorizontalEmail">
     <Form.Label style={{color: 'white'}} >First Name</Form.Label>
-    <Form.Control type="" placeholder="put name first here" className="firstName" onChange={this.stating}/>
+    <Form.Control type="" placeholder="put name first here" className="firstname" onChange={this.stating}/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlInput1">
     <Form.Label style={{color: 'white'}} >Last Name</Form.Label>
-    <Form.Control type="" placeholder="put name last here" className="lastName" onChange={this.stating}/>
+    <Form.Control type="" placeholder="put name last here" className="lastname" onChange={this.stating}/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.getClass}>
     <Form.Label style={{color: 'white'}} >Character Class</Form.Label>
