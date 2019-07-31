@@ -38,22 +38,25 @@ class CharForm extends Component{
             background: "",
             alignment: "",
             proficiency_ids: [], 
-            avatar: [] 
+            img_url: "" 
         }
     }
 
     onDrop = (picture) => {
+      let newPic = picture[0].name
+      debugger
       this.setState({
         character: {
           ...this.state.character,
-          avatar: this.state.character.avatar.concat(picture)}
+          img_url: newPic
+        }
       });
   }
 
         displayProf = () => {
-         return this.state.chosen.map(choose => {
+         return this.state.chosen.map((choose, i)=> {
             return(
-             <li>{choose}</li>
+             <li key={i}>{choose}</li>
             )
           })
         }
@@ -200,7 +203,7 @@ class CharForm extends Component{
             <Form.Label style={{color: 'white'}}>
               Intruments to Choose: {this.state.instrNum}
             </Form.Label>
-            <Form.Control as="select">
+            <Form.Control as="select" required>
               <option>please choose</option>
               {this.state.className.choose_proficiencies[1].map(prof =>
                 <option key={prof.id} value={prof.name}>{prof.name}</option>
@@ -250,6 +253,11 @@ class CharForm extends Component{
     submitForm = (event) => {
       event.preventDefault()
       let character = this.state.character
+      
+      
+     if(character.firstname === "" || character.lastname === "" || character.age === 0 || character.height === 0 || character.weight === 0 || character.eyes === "" || character.hair === "" || character.background === "" || character.alignment === "" || character.proficiency_ids === [] || this.state.className === null){
+       alert("Please Fill Out The Whole Form")
+     }else{
       const pProf = this.state.className.passive_proficiencies.map(prof => prof.id)
       const sThrows = this.state.className.saving_throws.map(prof => prof.id)
       character.proficiency_ids = [...character.proficiency_ids,...pProf,...sThrows]
@@ -268,14 +276,14 @@ class CharForm extends Component{
       .then(data => {
         this.props.newChar(data)
         this.props.routeProps.history.push('/characters')
-      })
+      })}
     }
 
 render(){
-  debugger
+  
  return (
   <div >
-  <Form onSubmit={this.submitForm} >
+  <Form  onSubmit={this.submitForm} >
     <Row>
       <Col sm={3}>
         
