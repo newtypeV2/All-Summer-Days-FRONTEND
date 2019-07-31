@@ -200,7 +200,37 @@ div.campaignlist{
   background: black;
 }
 
+div.cardback{
+  font-family: monospace;
+  font-size: 12px;
+}
+
+div.cardfront{
+  font-family: monospace;
+  font-size: 12px;
+}
+
 @font-face {
   font-family: mg4brush;
   src: url("./DNDSprites/MGS4Brush.ttf");
+}
+
+@font-face {
+  font-family: xsmall;
+  src: url("./DNDSprites/Extremely-Small-Fonts.ttf");
+}
+
+@font-face {
+  font-family: tiny;
+  src: url("./DNDSprites/tiny.ttf");
+}
+
+@font-face {
+  font-family: smallest;
+  src: url("./DNDSprites/smallest_pixel-7.ttf");
+}
+
+@font-face {
+  font-family: smallp;
+  src: url("./DNDSprites/small_pixel.ttf");
 }

@@ -9,7 +9,7 @@ class DMContainer extends React.Component{
 
     render(){
         return (
-            <Row>
+            <Row className="justify-content-lg-center">
                 {this.props.campaign.id ? this.displayAllChararacter() : null}
             </Row>
         )
