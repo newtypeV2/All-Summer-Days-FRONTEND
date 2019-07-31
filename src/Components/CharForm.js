@@ -153,6 +153,7 @@ class CharForm extends Component{
         )
       })   
       let newestArr = newestName.filter(arr => {return arr.length !== 0})
+      
       if(this.state.character.proficiency_ids.includes(newestArr[0][0].id)){
         alert("Already Selected")
         }
@@ -199,7 +200,7 @@ class CharForm extends Component{
       if(this.state.instrNum !== 0){
         return(
         <Form.Group controlId="exampleForm.ControlSelect2" onChange={(event) => this.setClassList(event, theKey, theNum)}>
-            <Form.Label style={{color: 'white'}}>
+            <Form.Label style={{color: 'red'}}>
               Intruments to Choose: {this.state.instrNum}
             </Form.Label>
             <Form.Control as="select" required>
@@ -224,7 +225,7 @@ class CharForm extends Component{
       if(this.state.toolNum !== 0){
         return(
         <Form.Group controlId="exampleForm.ControlSelect2" onChange={(event) => this.setClassList(event, theKey, theNum)}>
-            <Form.Label style={{color: 'white'}} >Tools to Choose: {this.state.toolNum}</Form.Label>
+            <Form.Label style={{color: 'red'}} >Tools to Choose: {this.state.toolNum}</Form.Label>
             <Form.Control as="select">
             <option>please choose</option>
             {this.state.className.choose_proficiencies[2].map(prof =>
