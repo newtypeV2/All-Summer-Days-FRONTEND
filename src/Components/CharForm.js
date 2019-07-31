@@ -5,7 +5,6 @@ import AbilityScore from './AbilityScore'
 
 class CharForm extends Component{
     state = {
-        redirect: false,
         pictures: [],
         chosen: [],
         skills: null,
