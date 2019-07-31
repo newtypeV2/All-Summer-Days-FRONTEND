@@ -2,12 +2,14 @@ import React from 'react';
 import {Card, Row} from 'react-bootstrap';
 import Buttons from '../Components/Button';
 import { Link } from 'react-router-dom';
+import {defaultImg} from '../constants'
 
 const CharacterCardPreview = (props) => {
         return(
             <div>
             <Card style={{width: "24rem",color: "white", marginTop: "3.7rem", marginLeft: "10rem", padding: "1rem"}}bg={'dark'} variant={'dark'}>
-            <Card.Img variant="top" src={props.character.avatar_available ? props.character.image_url : "https://via.placeholder.com/200"} />
+            <Card.Img variant="top" src={ props.character.avatar_available ? props.character.image_url : props.character.img_url === null ? defaultImg : props.character.img_url } />
+            
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
                 

@@ -1,5 +1,6 @@
 import React from "react";
 import {Row,Col} from "react-bootstrap"
+import {defaultImg} from '../constants'
 
 const Userview = (props) => {
     if (props.character.id){
@@ -27,7 +28,7 @@ const Userview = (props) => {
                         <div>Height: {props.character.height}cm</div>
                         <div>Weight: {props.character.weight}lbs</div>
                     </div>
-                    <img src={props.character.avatar_available ? props.character.image_url : "https://via.placeholder.com/200"} alt={'Avatar'} className="avatar"/>
+                    <img src={props.character.avatar_available ? props.character.image_url : props.character.img_url === null ? defaultImg : props.character.img_url } alt={'Avatar'} className="avatar"/>
                 </div>
             <div className="subCont">
                 <div className="charStats">
