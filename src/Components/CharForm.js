@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import ImageUploader from 'react-images-upload';
 import {Form, Col, Card, Row, Button} from 'react-bootstrap';
 import AbilityScore from './AbilityScore'
 
