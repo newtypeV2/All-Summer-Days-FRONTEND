@@ -19,7 +19,13 @@ class CampaignCharCard extends React.Component {
     render(){
         return(
             <div>
-                {this.state.flipped ? <CardBack character={this.props.character} clickHandler={this.flipCard}/> : <CardFront character={this.props.character} clickHandler={this.flipCard}/> }
+                {this.state.flipped ? <CardBack character={this.props.character} clickHandler={this.flipCard}/> 
+                : 
+                <CardFront 
+                    character={this.props.character} 
+                    clickHandler={this.flipCard}
+                    getProficiencyMod={this.props.getProficiencyMod} 
+                /> }
             </div>
         )
     }

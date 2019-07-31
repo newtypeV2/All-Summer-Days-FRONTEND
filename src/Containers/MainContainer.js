@@ -214,6 +214,7 @@ class MainContainer extends Component {
                             <Col sm={12}>
                                 <DMContainer
                                     campaign={this.state.selectedCampaign}
+                                    getProficiencyMod={this.getProficiencyMod} 
                                 />
                             </Col>
                         }/>

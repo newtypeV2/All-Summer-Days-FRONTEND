@@ -14,6 +14,8 @@ const CardFront = (props) => {
                     <li>Class : {props.character.char_class.name}</li>
                     <li>Level : {props.character.level}</li>
                     <li>Max HP : {props.character.max_hp}</li>
+                    <li>Current HP: {props.character.hitpoints}</li>
+                    <li>AC: {10+props.getProficiencyMod(props.character.dexterity)}</li> 
                   </ul>
             </Card.Body>
         </Card>
