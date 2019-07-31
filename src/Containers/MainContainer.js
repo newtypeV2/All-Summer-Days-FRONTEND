@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CharacterContainer from './CharacterContainer'
 import CharacterCardPreview from '../Components/CharacterCardPreview'
 import CharForm from '../Components/CharForm'
+import DmContainer from './DmContainer'
 import NavBar from '../Components/Navibar'
 import Login from '../Components/Login'
 import Userview from '../Components/Userview'
@@ -16,6 +17,7 @@ const classUrl = `http://${window.location.hostname}:5000/class`
 
 class MainContainer extends Component {
     state = {
+        chosenCamp: {},
         allCharacters: [],
         selectedCharacter: {},
         classList: [],
@@ -82,6 +84,7 @@ class MainContainer extends Component {
         .then(data => this.updateAllCharacter(data))
    }
 
+ 
     // componentDidUpdate = () => {
     //     let userURL = `http://${window.location.hostname}:5000/users/${this.state.loggedInUser.id}`
     //     if(this.state.loggedInUser.id){
@@ -119,6 +122,13 @@ class MainContainer extends Component {
         })
     }
 
+    setCamp = (camp) => {
+        
+        this.setState({
+            chosenCamp: camp
+        })
+    }
+
     render(){
         // console.log(this.state.allCharacters)
       return(
@@ -149,7 +159,8 @@ class MainContainer extends Component {
                             <React.Fragment>
                                 <Col sm={7}>
                                     <CharacterContainer 
-                                
+                                        setCamp={this.setCamp}
+                                        loggedInUser={this.state.loggedInUser}
                                         updateAllCharacter={this.updateAllCharacter}
                                         characters={this.state.allCharacters} 
                                         selectCharacter={this.selectCharacter}
@@ -157,7 +168,7 @@ class MainContainer extends Component {
                                     />
                                 
                                 
-                                {/* <Route exact path="/login" render={Login} />  */}
+                               
                                 </Col>
                                 <Col sm={5}>
 
@@ -187,6 +198,16 @@ class MainContainer extends Component {
                         }/>
                         {/* <Route exact path="/login" render={Login} />  */}
                     
+                    <Route exact path='/campaigns' render={(props) => 
+                        <Col sm={12}>
+                            <DmContainer
+                            camp={this.state.chosenCamp}
+                            routeProps={props}
+                            />
+                        </Col>
+                    
+                    
+                    }/>
                 </Row>   
             </div>     
     ) 

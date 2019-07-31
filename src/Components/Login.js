@@ -30,7 +30,7 @@ export default class Login extends React.Component{
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(info => {
+        .then(info => { 
             if (info.authenticated === "true"){
                 this.setState({
                     loggedIn : true

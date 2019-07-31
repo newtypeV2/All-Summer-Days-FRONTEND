@@ -441,6 +441,7 @@ render(){
               <option>Neutral Good </option>
               <option>Chaotic Good </option>
               <option>Lawful Neutral </option>
+              <option>Neutral</option>
               <option>Chaotic Neutral </option>
               <option>Lawful Evil </option>
               <option>Neutral Evil </option>
