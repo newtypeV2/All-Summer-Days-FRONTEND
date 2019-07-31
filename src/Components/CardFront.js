@@ -1,12 +1,13 @@
 import React from 'react';
 import {Card, Col} from 'react-bootstrap';
+import {defaultImg} from '../constants'
 
 const CardFront = (props) => {
     
     return( 
       <Col>
         <Card style={{width: "15rem",color: "white",margin: "1rem", padding: "1rem"}} onClick={props.clickHandler} bg={'dark'} variant={'dark'} className="cardfront">
-            <Card.Img variant="top" src={props.character.avatar_available ? props.character.image_url : "https://via.placeholder.com/200"} />
+        <Card.Img variant="top" src={ props.character.avatar_available ? props.character.image_url : props.character.img_url === null ? defaultImg : props.character.img_url } />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
                   <ul>
