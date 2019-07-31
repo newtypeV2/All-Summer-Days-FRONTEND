@@ -76,7 +76,7 @@ class CharForm extends Component{
                 }
                })
             }
-            debugger
+          
        } 
        
        pointCost = (event, props) => {
@@ -238,6 +238,7 @@ class CharForm extends Component{
     }
 
     stating = (event) => {
+      
       let num = parseInt(event.target.value) ? parseInt(event.target.value) : event.target.value
       let name = event.target.classList[0]
       this.setState({
@@ -250,11 +251,12 @@ class CharForm extends Component{
     }
 
     submitForm = (event) => {
+      debugger
       event.preventDefault()
       let character = this.state.character
       
       
-     if(character.firstname === "" || character.lastname === "" || character.age === 0 || character.height === 0 || character.weight === 0 || character.eyes === "" || character.hair === "" || character.background === "" || character.alignment === "" || character.proficiency_ids === [] || this.state.className === null){
+     if(character.firstname === "" || character.lastname === "" || character.age === 0 || character.height === 0 || character.weight === 0 || character.eyes === "" || character.hair === "" || character.background === "" || character.alignment === "" || character.proficiency_ids === [] || this.state.className === null || character.img_url === ""){
        alert("Please Fill Out The Whole Form")
      }else{
       const pProf = this.state.className.passive_proficiencies.map(prof => prof.id)
@@ -395,6 +397,7 @@ render(){
             <Form.Label style={{color: 'red'}}>Hair Color</Form.Label>
             <Form.Control as="select" className="hair" onChange={this.stating}>
             <option>please choose</option>
+            <option>Bald</option>
             <option>Black</option>
               <option>Gray</option>
               <option>Platinum</option>
@@ -441,11 +444,16 @@ render(){
               <option>Neutral Good </option>
               <option>Chaotic Good </option>
               <option>Lawful Neutral </option>
+              <option> Neutral</option>
               <option>Chaotic Neutral </option>
               <option>Lawful Evil </option>
               <option>Neutral Evil </option>
               <option>Chaotic Evil</option>
             </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label style={{color: 'red'}} >Picture</Form.Label>
+            <Form.Control type="" placeholder="put img_url here" className="img_url" onChange={this.stating}/>
           </Form.Group>
       </Col>  
 
@@ -509,14 +517,8 @@ render(){
             </Card.Body>
         </Card>
         
-        <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
-
+              
+          
       </Col>
     </Row>
   </Form> 
