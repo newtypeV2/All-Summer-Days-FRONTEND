@@ -16,7 +16,7 @@ const CharacterCard = (props) => {
                   </ul>
             </Card.Body>
            <Card.Footer>
-            <small className="text-muted">NOT IN CAMPAIGN</small>
+           <small className="text-muted">{props.character.in_campaign ? `IN CAMPAIGN : ${props.character.campaigns[0].title}` : 'NOT IN CAMPAIGN'}</small>
            </Card.Footer>
         </Card>
       </Col>

@@ -4,7 +4,6 @@ import Buttons from '../Components/Button';
 import { Link } from 'react-router-dom';
 
 const CharacterCardPreview = (props) => {
-
         return(
             <div>
             <Card style={{width: "24rem",color: "white", marginTop: "3.7rem", marginLeft: "10rem", padding: "1rem"}}bg={'dark'} variant={'dark'}>
@@ -39,7 +38,7 @@ const CharacterCardPreview = (props) => {
                 
             </Card.Body>
            <Card.Footer>
-            <small className="text-muted">NOT IN CAMPAIGN</small>
+            <small className="text-muted">{props.character.in_campaign ? `IN CAMPAIGN : ${props.character.campaigns[0].title}` : 'NOT IN CAMPAIGN'}</small>
            </Card.Footer>
         </Card>
         <Row  className="justify-content-lg-center"   >

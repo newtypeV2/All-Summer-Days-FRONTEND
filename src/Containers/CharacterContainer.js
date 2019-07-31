@@ -16,11 +16,6 @@ class CharacterContainer extends Component {
             <CharacterCard key={character.id} character={character} onClickHandler={this.props.selectCharacter}/> )
     }
 
-    
-
-        
-
-
     render(){
        
         return(
