@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Row, Col} from 'react-bootstrap';
+import {Card, Row} from 'react-bootstrap';
 import Buttons from '../Components/Button';
 import { Link } from 'react-router-dom';
 

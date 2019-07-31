@@ -1,11 +1,11 @@
 import React from 'react';
 import {Card, Col} from 'react-bootstrap';
 
-const CharacterCard = (props) => {
+const CardFront = (props) => {
     
     return( 
       <Col>
-        <Card style={{width: "15rem",color: "white",margin: "1rem", padding: "1rem"}} onClick={()=>props.onClickHandler(props.character)} bg={'dark'} variant={'dark'} >
+        <Card style={{width: "15rem",color: "white",margin: "1rem", padding: "1rem"}} onClick={props.clickHandler} bg={'dark'} variant={'dark'} >
             <Card.Img variant="top" src={props.character.avatar_available ? props.character.image_url : "https://via.placeholder.com/200"} />
             <Card.Body>
                 <Card.Title>{props.character.firstname} {props.character.lastname}</Card.Title>
@@ -15,9 +15,6 @@ const CharacterCard = (props) => {
                     <li>Max HP : {props.character.max_hp}</li>
                   </ul>
             </Card.Body>
-           <Card.Footer>
-            <small className="text-muted">NOT IN CAMPAIGN</small>
-           </Card.Footer>
         </Card>
       </Col>
         
@@ -25,4 +22,4 @@ const CharacterCard = (props) => {
     
 } 
 
-export default CharacterCard
+export default CardFront

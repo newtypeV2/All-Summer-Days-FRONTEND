@@ -7,9 +7,12 @@ import Login from '../Components/Login'
 import Userview from '../Components/Userview'
 import { Row, Col} from 'react-bootstrap'
 import {Route,Redirect} from 'react-router-dom'
+import CampaignList from '../Components/CampaignList'
+import DMContainer from './DMContainer'
+import {classUrl, charUrl} from '../constants'
 
-// const charUrl = `http://${window.location.hostname}:5000/characters`
-const classUrl = `http://${window.location.hostname}:5000/class`
+
+
 
 // console.log(window.location.hostname)
 
@@ -18,6 +21,7 @@ class MainContainer extends Component {
     state = {
         allCharacters: [],
         selectedCharacter: {},
+        selectedCampaign: {},
         classList: [],
         loggedInUser:{}
     }
@@ -75,7 +79,7 @@ class MainContainer extends Component {
     }
 
     deleteCharacter = () => {
-        fetch(`http://${window.location.hostname}:5000/characters/${this.state.selectedCharacter.id}`, {
+        fetch(`${charUrl}/${this.state.selectedCharacter.id}`, {
             method: 'DELETE'
         })
         .then(resp => resp.json())
@@ -119,15 +123,28 @@ class MainContainer extends Component {
         })
     }
 
+    selectCampaign = (campaignObj) =>{
+        // console.log(campaignObj)
+        this.setState({
+            selectedCampaign : campaignObj
+        })
+    }
+
     render(){
         // console.log(this.state.allCharacters)
+        let has_campaigns;
+        if (this.state.loggedInUser.campaigns === undefined || this.state.loggedInUser.campaigns.length === 0) {
+            has_campaigns = false
+        }else{
+            has_campaigns = true
+        }
       return(
             <div>
                 <NavBar 
                     loggedInUser={this.state.loggedInUser}
                 />
                 <Row id="mainrow">
-                        {this.state.loggedInUser.username ? <Redirect to="/characters"/> : <Redirect to="/login"/>}
+                        {this.state.loggedInUser.username ? this.state.selectedCampaign.id ? <Redirect to='/DMview'/> : <Redirect to="/characters"/> : <Redirect to="/login"/> }
                         {/* <Route exact path='/form' render={() => <CharForm/>}/> */}
                         <Route exact path="/login" render={() =>
                             <Col sm={12}>
@@ -149,7 +166,6 @@ class MainContainer extends Component {
                             <React.Fragment>
                                 <Col sm={7}>
                                     <CharacterContainer 
-                                
                                         updateAllCharacter={this.updateAllCharacter}
                                         characters={this.state.allCharacters} 
                                         selectCharacter={this.selectCharacter}
@@ -169,7 +185,16 @@ class MainContainer extends Component {
                                         deleteCharacter={this.deleteCharacter}
                                         /> 
                                         : 
-                                        null}
+                                        null
+                                    }
+                                    {has_campaigns ? 
+                                        <CampaignList
+                                            campaigns={this.state.loggedInUser.campaigns}
+                                            clickHandler={this.selectCampaign}
+                                        />
+                                        :
+                                        null    
+                                    }
                                 </Col>
                             </React.Fragment>
                         }/>
@@ -182,6 +207,13 @@ class MainContainer extends Component {
                                     redirectToCharPage={this.state.redirectToCharPage}
                                     classList={this.state.classList}
                                     loggedInUser={this.state.loggedInUser}
+                                />
+                            </Col>
+                        }/>
+                        <Route exact path="/DMview" render={() =>
+                            <Col sm={12}>
+                                <DMContainer
+                                    campaign={this.state.selectedCampaign}
                                 />
                             </Col>
                         }/>

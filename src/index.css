@@ -195,6 +195,11 @@ span.navibar{
   font-size: x-small;
 }
 
+div.campaignlist{
+  color: white;
+  background: black;
+}
+
 @font-face {
   font-family: mg4brush;
   src: url("./DNDSprites/MGS4Brush.ttf");
