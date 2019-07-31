@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Card, ListGroup, ListGroupItem} from 'react-bootstrap'
 const DmCard = (props) => {
     return(
-        <Card style={{ width: '18rem' }}>
+        <Card style={{width: "15rem",margin: "1rem", padding: "1rem"}} >
             
   <Card.Body>
     <Card.Title>{props.char.firstname}</Card.Title>

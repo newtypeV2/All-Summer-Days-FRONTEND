@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import DmCard from '../Components/DmCard'
-import {Row, Col, Card} from 'react-bootstrap'
+import {Row, Col, Container} from 'react-bootstrap'
 const campaignUrl = `http://${window.location.hostname}:5000/campaigns`
 class DmContainer extends Component{
     state = {
@@ -28,9 +28,13 @@ class DmContainer extends Component{
             <Row>
                 <Col>
                 <h1 style={{color: 'white'}}>{this.state.campaign.title}</h1>
-                {/* </Col>
-                <Col> */}
+                
+                 
+                <Container>
+                <Row> 
                 {this.getCard()}
+                </Row>
+                </Container> 
                 </Col>
             </Row>
             </div>
